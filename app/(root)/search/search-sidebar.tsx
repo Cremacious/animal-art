@@ -10,7 +10,6 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from '@/components/ui/sidebar';
-import { url } from 'inspector';
 
 const animalTypes = [
   {
@@ -48,7 +47,9 @@ const SearchSidebar = () => {
         <SidebarHeader />
         <SidebarContent>
           <SidebarGroup />
-          <SidebarGroupLabel>Animal Type</SidebarGroupLabel>
+          <SidebarGroupLabel className="font-bold text-black text-lg">
+            Animal Type
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {animalTypes.map((type) => (
@@ -60,7 +61,9 @@ const SearchSidebar = () => {
           </SidebarGroupContent>
           <SidebarGroup />
           <SidebarGroup />
-          <SidebarGroupLabel>Sizes</SidebarGroupLabel>
+          <SidebarGroupLabel className="font-bold text-black text-lg">
+            Sizes
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {photoSizes.map((size) => (
