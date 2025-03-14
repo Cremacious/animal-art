@@ -16,13 +16,15 @@ export default function RootLayout({
   return (
     <div className="flex h-screen flex-col">
       <Header />
-      <SidebarProvider>
-        {isSearchPage && <SearchSidebar />}
-        <main className="flex-1 wrapper">
-          {isSearchPage && <SidebarTrigger />}
-          {children}
-        </main>
-      </SidebarProvider>
+      <div className="flex flex-1 overflow-hidden">
+        <SidebarProvider>
+          {isSearchPage && <SearchSidebar />}
+          <main className="flex-1 wrapper relative z-10">
+            {isSearchPage && <SidebarTrigger />}
+            {children}
+          </main>
+        </SidebarProvider>
+      </div>
       {/* <Footer /> */}
     </div>
   );
