@@ -15,3 +15,9 @@ export function formatNumberWithDecimal(num: number): string {
   return decimal ? `${int}.${decimal.padEnd(2, '0')}` : `${int}.00`;
 }
 
+export function convertProductPriceToString(product: any) {
+  return {
+    ...product,
+    price: product.price.toString(),
+  };
+}

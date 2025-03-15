@@ -6,7 +6,7 @@ const latestProducts = await getLatestProducts();
 
 
   return ( <>
-  <ProductPreviewList data={latestProducts} />
+  {/* <ProductPreviewList data={latestProducts} /> */}
   
   </> );
 }

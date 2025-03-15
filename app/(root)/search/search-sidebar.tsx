@@ -40,6 +40,21 @@ const photoSizes = [
   },
 ];
 
+const prices = [
+  {
+    title: 'Under $50',
+    url: '/search?price=0-50',
+  },
+  {
+    title: '$50 - $100',
+    url: '/search?price=50-100',
+  },
+  {
+    title: '$100 - $150',
+    url: '/search?price=100-150',
+  },
+];
+
 const SearchSidebar = () => {
   return (
     <>

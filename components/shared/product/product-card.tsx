@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { Product } from '@/types';
 import ProductPrice from './product-price';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -22,6 +24,9 @@ const ProductCard = ({ product }: { product: Product }) => {
           {product.description}{' '}
           {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
           <ProductPrice value={Number(product.price)} />
+          <Link href={`/products/${product.slug}`}>
+            <Button>View</Button>
+          </Link>
         </CardContent>
       </Card>
     </>
