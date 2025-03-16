@@ -1,16 +1,18 @@
-import ProductPreviewList from "@/components/shared/product/product-preview-list";
-import { getLatestProducts } from "@/lib/actions/product.action";
+import HomepageHero from '@/components/homepage-hero';
+import { getLatestProducts } from '@/lib/actions/product.action';
 
 // TODO: Add metadata to the page
 
 const Homepage = async () => {
-const latestProducts = await getLatestProducts();
+  const latestProducts = await getLatestProducts();
 
 
-  return ( <>
-  {/* <ProductPreviewList data={latestProducts} /> */}
-  
-  </> );
-}
- 
+
+  return (
+    <>
+      <HomepageHero />
+    </>
+  );
+};
+
 export default Homepage;
