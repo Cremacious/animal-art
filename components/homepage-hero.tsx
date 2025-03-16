@@ -8,34 +8,7 @@ import image2 from '@/public/images/sample-products/p2-1.jpg';
 import image3 from '@/public/images/sample-products/p3-1.jpg';
 import image4 from '@/public/images/sample-products/p4-1.jpg';
 
-const HomepageHero = (
-  heading = 'Animal Art by Heather',
-  description = 'Shop beautiful watercolor animal portraits, or have a custom work be commissioned.',
-  button = {
-    text: 'Get Started',
-    url: '#',
-  },
-  testimonial = {
-    quote: 'Focused strategy, swift delivery',
-    author: 'John Doe',
-    role: 'CEO',
-    company: 'Company',
-    avatars: [
-      {
-        image: 'https://shadcnblocks.com/images/block/avatar-1.webp',
-        fallback: 'AB',
-      },
-      {
-        image: 'https://shadcnblocks.com/images/block/avatar-2.webp',
-        fallback: 'CD',
-      },
-      {
-        image: 'https://shadcnblocks.com/images/block/avatar-3.webp',
-        fallback: 'EF',
-      },
-    ],
-  }
-) => {
+const HomepageHero = () => {
   return (
     <section className="py-12 md:py-20">
       <div className="container mx-auto">
@@ -57,7 +30,7 @@ const HomepageHero = (
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <div className="relative flex -space-x-6">
-                {testimonial.avatars.map((avatar, index) => (
+                {/* {testimonial.avatars.map((avatar, index) => (
                   <Avatar
                     key={index}
                     className={`relative z-${
@@ -67,7 +40,7 @@ const HomepageHero = (
                     <AvatarImage src={avatar.image} alt="" />
                     <AvatarFallback>{avatar.fallback}</AvatarFallback>
                   </Avatar>
-                ))}
+                ))} */}
               </div>
               <div>
                 <p className="mb-1 text-sm text-gray-500 italic">
