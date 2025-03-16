@@ -1,8 +1,8 @@
+import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { prisma } from '@/prisma/prisma';
-import CredentialsProvider from 'next-auth/providers/credentials';
 import { compareSync } from 'bcrypt-ts-edge';
+import { prisma } from '@/prisma/prisma';
 
 export const authOptions = {
   pages: {

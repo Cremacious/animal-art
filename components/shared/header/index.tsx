@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+// TODO: Create a header component that displays the site name and navigation links
+
 const Header = () => {
   return (
     <nav className="bg-teal-600 w-full">

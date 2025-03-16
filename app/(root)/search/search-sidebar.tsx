@@ -1,17 +1,18 @@
 import {
   Sidebar,
-  SidebarHeader,
   SidebarContent,
-  SidebarGroup,
   SidebarFooter,
-  SidebarGroupLabel,
+  SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
+  SidebarMenuItem,
 } from '@/components/ui/sidebar';
 
 const animalTypes = [
+  { title: 'All', url: '/search', icon: 'All' },
   {
     title: 'Dog',
     url: '/search?animal_type=dog',
@@ -55,6 +56,8 @@ const prices = [
   },
 ];
 
+// TODO: Create a search sidebar component that displays search filters
+
 const SearchSidebar = () => {
   return (
     <>
@@ -62,7 +65,7 @@ const SearchSidebar = () => {
         <SidebarHeader />
         <SidebarContent>
           <SidebarGroup />
-          <SidebarGroupLabel className="font-bold text-black text-lg">
+          <SidebarGroupLabel className="text-lg font-bold text-black">
             Animal Type
           </SidebarGroupLabel>
           <SidebarGroupContent>
