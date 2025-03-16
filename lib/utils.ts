@@ -21,3 +21,7 @@ export function convertProductPriceToString(product: any) {
     price: product.price.toString(),
   };
 }
+
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
