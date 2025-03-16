@@ -2,9 +2,9 @@ import {
   getAllProducts,
   getAllSizes,
   getAllTypes,
-  getLatestProducts,
 } from '@/lib/actions/product.action';
 
+import Link from 'next/link';
 import ProductCard from '@/components/shared/product/product-card';
 
 const SearchPage = async (props: {
@@ -42,11 +42,10 @@ const SearchPage = async (props: {
     animalType,
     size,
     price,
-    page: Number(page), // or any other page number you want to start with
+    page: Number(page), 
   });
 
   console.log(products);
-  const latestProducts = await getLatestProducts();
   const types = await getAllTypes();
   const sizes = await getAllSizes();
 
@@ -55,8 +54,25 @@ const SearchPage = async (props: {
       <div className="grid grid-cols-2">
         <div className="flex flex-col">
           <div>Animals</div>
-          {types.map((type) => (
-            <div key={type.animalType}>{type.animalType}</div>
+          <li>
+            <Link
+              className={`${
+                (animalType === 'all' || animalType === '') && 'font-bold'
+              }`}
+              href={getFilteredUrl({ a: 'all' })}
+            >
+              Any
+            </Link>
+          </li>
+          {types.map((x) => (
+            <li key={x.animalType}>
+              <Link
+                className={`${animalType === x.animalType && 'font-bold'}`}
+                href={getFilteredUrl({ a: x.animalType })}
+              >
+                {x.animalType}
+              </Link>
+            </li>
           ))}
           <div>Size</div>
           {sizes.map((size) => (
