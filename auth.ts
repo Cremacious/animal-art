@@ -4,7 +4,7 @@ import { PrismaAdapter } from '@auth/prisma-adapter';
 import { compareSync } from 'bcrypt-ts-edge';
 import { prisma } from '@/prisma/prisma';
 
-export const authOptions = {
+export const options = {
   pages: {
     signIn: '/signin',
     error: '/signin',
@@ -46,4 +46,4 @@ export const authOptions = {
   ],
 };
 
-export default NextAuth(authOptions);
+export const { handlers, auth, signIn, signOut } = NextAuth(options);
