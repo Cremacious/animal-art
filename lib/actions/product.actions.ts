@@ -15,13 +15,6 @@ export async function getLatestProducts() {
   return convertToPlainObject(products);
 }
 
-// export async function getAllProducts() {
-//   const prisma = new PrismaClient();
-//   const data = await prisma.product.findMany();
-//   const products = data.map(convertProductPriceToString);
-//   return convertToPlainObject(products);
-// }
-
 export async function getProductById(productId: string) {
   const prisma = new PrismaClient();
   const data = await prisma.product.findFirst({

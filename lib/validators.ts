@@ -1,5 +1,5 @@
-import { z } from 'zod';
 import { formatNumberWithDecimal } from '@/lib/utils';
+import { z } from 'zod';
 
 // Make sure price is formatted with two decimal places
 const currency = z
@@ -23,4 +23,9 @@ export const insertProductSchema = z.object({
   stock: z.number().int().positive(),
   price: currency,
   isFeatured: z.boolean(),
+});
+
+export const signInFormSchema = z.object({
+  email: z.string().email('Invalid email address').min(3, 'Email must be at least 3 characters'),
+  password: z.string().min(3, 'Password must be at least 3 characters'),
 });

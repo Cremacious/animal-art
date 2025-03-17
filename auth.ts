@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { compareSync } from 'bcrypt-ts-edge';
 import { prisma } from '@/prisma/prisma';
+import type { NextAuthConfig } from 'next-auth';
 
 export const options = {
   pages: {
@@ -44,6 +45,23 @@ export const options = {
       },
     }),
   ],
-};
+  callbacks: {
+    async jwt({ token, user }: any) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
+        token.role = user.role;
+      }
+      console.log('jwt', token);
+      return token;
+    },
+    async session({ session, token }: any) {
+      session.user.id = token.id;
+      session.user.role = token.role;
+      console.log('session', session);
+      return session;
+    },
+  },
+} satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(options);

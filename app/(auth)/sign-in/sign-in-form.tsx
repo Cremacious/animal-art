@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Card,
   CardContent,
@@ -10,14 +12,27 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { signInWithCredentials } from '@/lib/actions/user.actions';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 
-export function SignInForm({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+const SignInForm = () => {
+  const [data, action] = useActionState(signInWithCredentials, {
+    message: '',
+    success: false,
+  });
+
+  const SignInButton = () => {
+    const { pending } = useFormStatus();
+    return (
+      <Button disabled={pending} variant="default">
+        {pending ? 'Logging In...' : 'Log In'}
+      </Button>
+    );
+  };
+
   return (
-    <div className={cn('flex flex-col gap-6', className)} {...props}>
+    <div className="flex flex-col gap-6">
       <Card>
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
@@ -26,7 +41,7 @@ export function SignInForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form action={action}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="email">Email</Label>
@@ -50,9 +65,10 @@ export function SignInForm({
                 <Input id="password" type="password" required />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
-                  Login
-                </Button>
+                <SignInButton />
+                {data && !data.success && (
+                  <div className="text-red-500 text-sm">{data.message}</div>
+                )}
                 <Button variant="outline" className="w-full">
                   Login with Google
                 </Button>
@@ -69,4 +85,6 @@ export function SignInForm({
       </Card>
     </div>
   );
-}
+};
+
+export default SignInForm;

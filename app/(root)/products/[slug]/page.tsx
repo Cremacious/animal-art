@@ -1,5 +1,5 @@
-import { getProductBySlug } from '@/lib/actions/product.action';
 import NotFoundPage from '@/app/not-found';
+import { getProductBySlug } from '@/lib/actions/product.actions';
 
 const ProductPage = async ({
   params,

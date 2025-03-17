@@ -2,7 +2,7 @@ import {
   getAllProducts,
   getAllSizes,
   getAllTypes,
-} from '@/lib/actions/product.action';
+} from '@/lib/actions/product.actions';
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
