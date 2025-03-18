@@ -1,20 +1,20 @@
 import { hashSync } from 'bcrypt-ts-edge';
 
 const sampleData = {
-    users: [
-      {
-        name: 'John',
-        email: 'adminemail@test.com',
-        password: hashSync('123456', 10),
-        role: 'admin',
-      },
-      {
-        name: 'Jane',
-        email: 'useremail@test.com',
-        password: hashSync('123456', 10),
-        role: 'user',
-      },
-    ],
+  users: [
+    {
+      name: 'John',
+      email: 'adminemail@test.com',
+      password: hashSync('123456', 10),
+      role: 'admin',
+    },
+    {
+      name: 'Jane',
+      email: 'useremail@test.com',
+      password: hashSync('123456', 10),
+      role: 'user',
+    },
+  ],
   products: [
     {
       name: 'Dog in basket',
@@ -56,6 +56,34 @@ const sampleData = {
       description: 'Classic Polo style with modern comfort',
       stock: 5,
       price: 59.99,
+      isFeatured: true,
+    },
+    {
+      name: 'Lizard in basket',
+      slug: 'lizard-in-basket',
+      animalType: 'lizard',
+      images: [
+        '/images/sample-products/p1-1.jpg',
+        '/images/sample-products/p1-2.jpg',
+      ],
+      size: '8x11',
+      description: 'Classic Polo style with modern comfort',
+      stock: 5,
+      price: 99.99,
+      isFeatured: true,
+    },
+    {
+      name: 'bird in basket',
+      slug: 'bird-in-basket',
+      animalType: 'bird',
+      images: [
+        '/images/sample-products/p1-1.jpg',
+        '/images/sample-products/p1-2.jpg',
+      ],
+      size: '8x11',
+      description: 'Classic Polo style with modern comfort',
+      stock: 5,
+      price: 99.99,
       isFeatured: true,
     },
   ],
