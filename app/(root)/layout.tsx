@@ -4,7 +4,8 @@
 
 // import Footer from '@/components/footer';
 
-import { Navbar1 } from '@/components/shared/header';
+import { Main } from 'next/document';
+import MainNavbar from '@/components/shared/header/MainNavbar';
 
 export default function RootLayout({
   children,
@@ -13,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex flex-col">
-      <Navbar1 />
+      <MainNavbar />
       <div className="flex flex-1 overflow-hidden">
         <main className="flex-1 wrapper relative z-10">{children}</main>
       </div>
