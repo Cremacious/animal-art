@@ -1,4 +1,5 @@
 import {
+  getAllPrices,
   getAllProducts,
   getAllSizes,
   getAllTypes,
@@ -50,6 +51,7 @@ const SearchPage = async (props: {
 
   const types = await getAllTypes();
   const sizes = await getAllSizes();
+  const prices = await getAllPrices(); // TODO: Fix decimal error caused by Prisma
 
   return (
     <div className="flex flex-col md:flex-row">
@@ -102,15 +104,15 @@ const SearchPage = async (props: {
         <div className="mb-4">
           <h2 className="text-lg font-bold mb-2">Prices</h2>
           <ul className="flex flex-wrap md:flex-col gap-2">
-            {/* {prices.map((price) => (
-              <li key={price.title}>
+            {/* {prices.map((x) => (
+              <li key={x.price}>
                 <Link
-                  href={getFilteredUrl({ p: price.title })}
+                  href={getFilteredUrl({ p: x.price })}
                   className={`block ${
-                    price === price.title ? 'font-bold text-blue-600' : ''
+                    price === x.price ? 'font-bold text-blue-600' : ''
                   }`}
                 >
-                  {price.title}
+                  {x.price}
                 </Link>
               </li>
             ))} */}

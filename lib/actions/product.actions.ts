@@ -48,6 +48,14 @@ export async function getAllSizes() {
   return data;
 }
 
+export async function getAllPrices() {
+  const data = await prisma.product.groupBy({
+    by: ['price'],
+  });
+
+  return data;
+}
+
 export async function getAllProducts({
   animalType,
   size,
