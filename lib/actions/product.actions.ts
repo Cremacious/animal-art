@@ -2,10 +2,9 @@
 
 import { convertProductPriceToString, convertToPlainObject } from '../utils';
 
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/db/prisma';
 
 export async function getLatestProducts() {
-  const prisma = new PrismaClient();
   const data = await prisma.product.findMany({
     take: 3,
     orderBy: { createdAt: 'desc' },
@@ -16,7 +15,6 @@ export async function getLatestProducts() {
 }
 
 export async function getProductById(productId: string) {
-  const prisma = new PrismaClient();
   const data = await prisma.product.findFirst({
     where: {
       id: productId,
@@ -26,7 +24,6 @@ export async function getProductById(productId: string) {
 }
 
 export async function getProductBySlug(productSlug: string) {
-  const prisma = new PrismaClient();
   const data = await prisma.product.findFirst({
     where: {
       slug: productSlug,
@@ -36,7 +33,6 @@ export async function getProductBySlug(productSlug: string) {
 }
 
 export async function getAllTypes() {
-  const prisma = new PrismaClient();
   const data = await prisma.product.groupBy({
     by: ['animalType'],
   });
@@ -45,7 +41,6 @@ export async function getAllTypes() {
 }
 
 export async function getAllSizes() {
-  const prisma = new PrismaClient();
   const data = await prisma.product.groupBy({
     by: ['size'],
   });
@@ -79,7 +74,6 @@ export async function getAllProducts({
         }
       : {};
 
-  const prisma = new PrismaClient();
   const data = await prisma.product.findMany({
     where: {
       ...animalTypeFilter,
