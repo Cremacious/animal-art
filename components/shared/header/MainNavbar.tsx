@@ -1,5 +1,7 @@
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Menu from './menu';
+import { signOutUser } from '@/lib/actions/user.actions';
 
 const MainNavbar = () => {
   return (
@@ -31,13 +33,12 @@ const MainNavbar = () => {
               href="/resources"
               className="text-gray-700 hover:text-teal-400"
             >
-              Resources
+              Commission
             </Link>
             <Link href="/about" className="text-gray-700 hover:text-teal-400">
               About
             </Link>
           </div>
-          {/* <AuthNavButtons /> */}
           {/* Sign In / Sign Up */}
           <div className="hidden md:flex space-x-4">
             <Menu />

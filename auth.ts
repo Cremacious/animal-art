@@ -1,29 +1,30 @@
-import CredentialsProvider from 'next-auth/providers/credentials';
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
+import { prisma } from '@/db/prisma';
+import CredentialProvider from 'next-auth/providers/credentials';
 import { compareSync } from 'bcrypt-ts-edge';
-import { prisma } from '@/prisma/prisma';
 import type { NextAuthConfig } from 'next-auth';
+import { cookies } from 'next/headers';
+import { NextResponse } from 'next/server';
 
-export const options = {
+export const config = {
   pages: {
     signIn: '/sign-in',
     error: '/sign-in',
-    signOut: '/sign-out',
   },
   session: {
-    strategy: 'jwt' as const,
+    strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60,
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    CredentialsProvider({
+    CredentialProvider({
       credentials: {
         email: { type: 'email' },
         password: { type: 'password' },
       },
       async authorize(credentials) {
-        if (credentials == null) return null;
+        if (credentials === null) return null;
         const user = await prisma.user.findFirst({
           where: {
             email: credentials.email as string,
@@ -47,22 +48,55 @@ export const options = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: any) {
+    async session({ session, user, trigger, token }: any) {
+      session.user.id = token.sub;
+      session.user.role = token.role;
+      session.user.name = token.name;
+      if (trigger === 'update') {
+        session.user.name = user.name;
+      }
+      return session;
+    },
+    async jwt({ token, user, trigger, session }: any) {
       if (user) {
         token.id = user.id;
-        token.email = user.email;
         token.role = user.role;
+        if (user.name === 'NO_NAME') {
+          token.name = user.email!.split('@')[0];
+          await prisma.user.update({
+            where: { id: user.id },
+            data: { name: token.name },
+          });
+        }
+        // if (trigger === 'signIn' || trigger === 'signUp') {
+        //   const cookiesObject = await cookies();
+        //   const sessionCartId = cookiesObject.get('sessionCartId')?.value;
+        //   if (sessionCartId) {
+        //     const sessionCart = await prisma.cart.findFirst({
+        //       where: {
+        //         sessionCartId,
+        //       },
+        //     });
+        //     if (sessionCart) {
+        //       await prisma.cart.deleteMany({
+        //         where: { userId: user.id },
+        //       });
+        //       await prisma.cart.update({
+        //         where: { id: sessionCart.id },
+        //         data: { userId: user.id },
+        //       });
+        //     }
+        //   }
+        // }
       }
-      console.log('jwt', token);
+
+      if (session?.user.name && trigger === 'update') {
+        token.name = session.user.name;
+      }
+
       return token;
-    },
-    async session({ session, token }: any) {
-      session.user.id = token.id;
-      session.user.role = token.role;
-      console.log('session', session);
-      return session;
     },
   },
 } satisfies NextAuthConfig;
 
-export const { handlers, auth, signIn, signOut } = NextAuth(options);
+export const { handlers, auth, signIn, signOut } = NextAuth(config);
