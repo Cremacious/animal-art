@@ -21,19 +21,19 @@ const MainNavbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-blue-600">
+            <Link href="/" className="text-gray-700 hover:text-teal-400">
               Home
             </Link>
-            <Link href="/search" className="text-gray-700 hover:text-blue-600">
+            <Link href="/search" className="text-gray-700 hover:text-teal-400">
               Gallery
             </Link>
             <Link
               href="/resources"
-              className="text-gray-700 hover:text-blue-600"
+              className="text-gray-700 hover:text-teal-400"
             >
               Resources
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600">
+            <Link href="/about" className="text-gray-700 hover:text-teal-400">
               About
             </Link>
           </div>

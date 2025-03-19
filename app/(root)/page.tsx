@@ -8,7 +8,7 @@ const Homepage = async () => {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex mx-20 bg-white justify-center rounded-xl">
         <HomepageHero />
       </div>
     </>
