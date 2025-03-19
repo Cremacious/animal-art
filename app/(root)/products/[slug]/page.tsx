@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
+import AddToCart from '@/components/shared/product/add-to-cart';
 import NotFoundPage from '@/app/not-found';
 import ProductImages from '@/components/shared/product/product-images';
 import { getProductBySlug } from '@/lib/actions/product.actions';
@@ -43,7 +44,10 @@ const ProductPage = async ({
             </CardFooter> */}
           </Card>
         </div>
-        <div className="col-span-1">{Number(product.price)}</div>
+        <div className="col-span-1">{Number(product.price)}
+
+          <AddToCart  />
+        </div>
       </div>
     </>
   );

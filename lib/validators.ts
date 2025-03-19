@@ -25,7 +25,42 @@ export const insertProductSchema = z.object({
   isFeatured: z.boolean(),
 });
 
+export const cartItemSchema = z.object({
+  productId: z.string().min(3, 'Product ID must be at least 3 characters long'),
+  name: z.string().min(3, 'Name must be at least 3 characters long'),
+  slug: z.string().min(3, 'Slug must be at least 3 characters long'),
+  price: currency,
+  image: z.string().min(1, 'Image must be at least 1 character long'),
+  quantity: z.number().int().positive(),
+});
+
+export const insertCartSchema = z.object({
+  items: z.array(cartItemSchema),
+  itemsPrice: currency,
+  totalPrice: currency,
+  shippingPrice: currency,
+  taxPrice: currency,
+  sessionCartId: z
+    .string()
+    .min(3, 'Session Cart ID must be at least 3 characters long'),
+  userId: z.string().optional().nullable(),
+});
+
 export const signInFormSchema = z.object({
-  email: z.string().email('Invalid email address').min(3, 'Email must be at least 3 characters'),
+  email: z
+    .string()
+    .email('Invalid email address')
+    .min(3, 'Email must be at least 3 characters'),
   password: z.string().min(3, 'Password must be at least 3 characters'),
+});
+
+export const shippingAddressSchema = z.object({
+  fullName: z.string().min(3, 'Full Name must be at least 3 characters long'),
+  streetAddress: z
+    .string()
+    .min(3, 'Street Address must be at least 3 characters long'),
+  city: z.string().min(3, 'City must be at least 3 characters long'),
+  state: z.string().min(1, 'State must be at least 1 character long'),
+  zipCode: z.string().min(3, 'Zip Code must be at least 3 characters long'),
+  country: z.string().min(3, 'Country must be at least 3 characters long'),
 });
