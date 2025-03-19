@@ -1,10 +1,10 @@
-import AuthNavButtons from './auth-nav-buttons';
 import Link from 'next/link';
+import Menu from './menu';
 
 const MainNavbar = () => {
   return (
     <>
-      <nav className="bg-white shadow-md">
+      <nav className="bg-white mb-2 border-b border-gray-200">
         <div className="container mx-auto px-4 flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -37,18 +37,10 @@ const MainNavbar = () => {
               About
             </Link>
           </div>
-          <AuthNavButtons />
+          {/* <AuthNavButtons /> */}
           {/* Sign In / Sign Up */}
           <div className="hidden md:flex space-x-4">
-            <Link href="/sign-in" className="text-gray-700 hover:text-blue-600">
-              Sign In
-            </Link>
-            <Link
-              href="/sign-up"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-              Sign Up
-            </Link>
+            <Menu />
           </div>
         </div>
       </nav>
