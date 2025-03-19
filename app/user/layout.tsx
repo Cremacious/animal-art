@@ -1,7 +1,3 @@
-
-
-// import Footer from '@/components/footer';
-
 import MainNavbar from '@/components/shared/header/MainNavbar';
 
 export default function RootLayout({
