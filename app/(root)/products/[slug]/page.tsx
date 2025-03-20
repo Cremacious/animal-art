@@ -44,9 +44,23 @@ const ProductPage = async ({
             </CardFooter> */}
           </Card>
         </div>
-        <div className="col-span-1">{Number(product.price)}
+        <div className="col-span-1">
+          {Number(product.price)}
 
-          <AddToCart  />
+          {product.stock > 0 && (
+            <div className="flex-center">
+              <AddToCart
+                item={{
+                  productId: product.id,
+                  name: product.name,
+                  slug: product.slug,
+                  price: product.price.toString(),
+                  quantity: 1,
+                  image: product.images![0],
+                }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
