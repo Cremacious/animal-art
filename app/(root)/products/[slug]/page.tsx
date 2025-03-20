@@ -10,6 +10,7 @@ import {
 import AddToCart from '@/components/shared/product/add-to-cart';
 import NotFoundPage from '@/app/not-found';
 import ProductImages from '@/components/shared/product/product-images';
+import { getMyCart } from '@/lib/actions/cart.actions';
 import { getProductBySlug } from '@/lib/actions/product.actions';
 
 const ProductPage = async ({
@@ -19,6 +20,7 @@ const ProductPage = async ({
 }) => {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
+  const cart = await getMyCart();
 
   if (!product) {
     return <NotFoundPage />;
@@ -50,6 +52,7 @@ const ProductPage = async ({
           {product.stock > 0 && (
             <div className="flex-center">
               <AddToCart
+                cart={cart}
                 item={{
                   productId: product.id,
                   name: product.name,
