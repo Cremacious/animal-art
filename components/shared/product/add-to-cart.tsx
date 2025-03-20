@@ -15,7 +15,7 @@ const AddToCart = ({ item }: { item: CartItem }) => {
     if (!res.success) {
       return toast.error(res.message);
     }
-    toast.success(`${item.name} added to cart`, {
+    toast.success(res.message, {
       action: {
         label: 'View Cart',
         onClick: () => {
