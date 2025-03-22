@@ -14,6 +14,7 @@ import { addItemToCart, removeItemFromCart } from '@/lib/actions/cart.actions';
 
 import { Button } from '@/components/ui/button';
 import { Cart } from '@/types';
+import CheckoutSteps from '@/components/shared/checkout-steps';
 import Image from 'next/image';
 import Link from 'next/link';
 import { formatCurrency } from '@/lib/utils';
@@ -27,6 +28,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
 
   return (
     <>
+      <CheckoutSteps current={0} />
       <h1 className="py-4 h2-bold">Shopping Cart Table</h1>
       {!cart || cart.items.length === 0 ? (
         <div>

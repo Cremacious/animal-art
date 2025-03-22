@@ -1,11 +1,12 @@
 import CredentialsProvider from 'next-auth/providers/credentials';
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { authConfig } from './auth.config';
 import { compareSync } from 'bcrypt-ts-edge';
 import { cookies } from 'next/headers';
 import { prisma } from '@/db/prisma';
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const config = {
   pages: {
@@ -32,15 +33,11 @@ export const config = {
             email: credentials.email as string,
           },
         });
-
-        // Check if user exists and if the password matches
         if (user && user.password) {
           const isMatch = await compareSync(
             credentials.password as string,
             user.password
           );
-
-          // If password is correct, return user
           if (isMatch) {
             return {
               id: user.id,
@@ -50,7 +47,6 @@ export const config = {
             };
           }
         }
-        // If user does not exist or password does not match return null
         return null;
       },
     }),
@@ -58,12 +54,10 @@ export const config = {
   callbacks: {
     ...authConfig.callbacks,
     async session({ session, user, trigger, token }: any) {
-      // Set the user ID from the token
       session.user.id = token.sub;
       session.user.role = token.role;
       session.user.name = token.name;
 
-      // If there is an update, set the user name
       if (trigger === 'update') {
         session.user.name = user.name;
       }
@@ -71,7 +65,6 @@ export const config = {
       return session;
     },
     async jwt({ token, user, trigger, session }: any) {
-      // Assign user fields to token
       if (user) {
         token.id = user.id;
         token.role = user.role;
@@ -80,7 +73,7 @@ export const config = {
         // if (user.name === 'NO_NAME') {
         //   token.name = user.email!.split('@')[0];
 
-          // Update database to reflect the token name
+        // Update database to reflect the token name
         //   await prisma.user.update({
         //     where: { id: user.id },
         //     data: { name: token.name },
@@ -97,12 +90,9 @@ export const config = {
             });
 
             if (sessionCart) {
-              // Delete current user cart
               await prisma.cart.deleteMany({
                 where: { userId: user.id },
               });
-
-              // Assign new cart
               await prisma.cart.update({
                 where: { id: sessionCart.id },
                 data: { userId: user.id },
@@ -111,8 +101,6 @@ export const config = {
           }
         }
       }
-
-      // Handle session updates
       if (session?.user.name && trigger === 'update') {
         token.name = session.user.name;
       }
