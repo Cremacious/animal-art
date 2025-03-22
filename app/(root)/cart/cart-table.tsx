@@ -123,6 +123,20 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                   {formatCurrency(cart.itemsPrice)}
                 </span>
               </div>
+              <Button
+                onClick={() =>
+                  startTransition(() => router.push('/shipping-address'))
+                }
+                className="w-full"
+                disabled={isPending}
+              >
+                {isPending ? (
+                  <Loader className="animate-spin w-4 h-4" />
+                ) : (
+                  <ArrowRight className="w-4 h-4" />
+                )}
+                Proceed to Checkout
+              </Button>
             </CardContent>
           </Card>
         </div>

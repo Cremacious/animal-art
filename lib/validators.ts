@@ -64,3 +64,4 @@ export const shippingAddressSchema = z.object({
   zipCode: z.string().min(3, 'Zip Code must be at least 3 characters long'),
   country: z.string().min(3, 'Country must be at least 3 characters long'),
 });
+
