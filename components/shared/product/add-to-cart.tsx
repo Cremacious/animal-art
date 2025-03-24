@@ -40,20 +40,20 @@ const AddToCart = ({ item, cart }: { item: CartItem; cart?: Cart }) => {
   };
 
   return existItem ? (
-    <div className="w-full flex flex-row">
+    <div className="flex flex-row">
       <Button variant="outline" onClick={handleRemoveFromCart}>
         <Minus className="w-4 h-4" />
       </Button>
       <Button variant="ghost" className="mx-2">
-        {item.quantity}
+        <p>{existItem.quantity}</p>
       </Button>
 
-      <Button onClick={handleAddToCart}>
+      <Button variant="outline" onClick={handleAddToCart}>
         <Plus className="w-4 h-4" />
       </Button>
     </div>
   ) : (
-    <Button className="w-full" onClick={handleAddToCart}>
+    <Button variant="outline" className="w-full" onClick={handleAddToCart}>
       <Plus className="w-4 h-4" />
       Add to cart
     </Button>
