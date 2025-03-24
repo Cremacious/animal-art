@@ -1,6 +1,5 @@
 import CheckoutSteps from '@/components/shared/checkout-steps';
 import { Metadata } from 'next';
-import { Ship } from 'lucide-react';
 import { ShippingAddress } from '@/types';
 import ShippingAddressForm from './shipping-address-form';
 import { auth } from '@/auth';
@@ -11,22 +10,19 @@ import { redirect } from 'next/navigation';
 export const metadata: Metadata = {
   title: 'Shipping Address',
 };
+
 const ShippingAddressPage = async () => {
   const cart = await getMyCart();
 
-  if (!cart || cart.items.length === 0) {
-    redirect('/cart');
-  }
+  if (!cart || cart.items.length === 0) redirect('/cart');
+
   const session = await auth();
+
   const userId = session?.user?.id;
 
-  if (!userId) throw new Error('User not found');
+  if (!userId) throw new Error('No user ID');
 
   const user = await getUserById(userId);
-
-  if (!('address' in user)) {
-    throw new Error('User address not found');
-  }
 
   return (
     <>

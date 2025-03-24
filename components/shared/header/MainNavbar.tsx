@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Book, Menu, Sunset, Trees, Zap } from 'lucide-react';
+import { Book, Menu, ShoppingCartIcon, Sunset, Trees, Zap } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -81,7 +81,7 @@ export const MainNavbar = ({
   ],
 }: Navbar1Props) => {
   return (
-    <section className="py-4 mb-4 bg-white">
+    <section className="py-2 mb-4 bg-white">
       <div className="container">
         {/* Desktop Menu */}
         <nav className="hidden justify-between lg:flex">
@@ -107,7 +107,13 @@ export const MainNavbar = ({
             </div>
           </div>
           {/* <Menu /> */}
-          <AuthMenu />
+          <div className="md:flex justify-around">
+            <Link href="/cart" className="flex items-center gap-2 mr-4">
+              <ShoppingCartIcon className="size-5" />
+              <span>Cart</span>
+            </Link>
+            <AuthMenu />
+          </div>
         </nav>
 
         {/* Mobile Menu */}
@@ -123,36 +129,42 @@ export const MainNavbar = ({
               />
               <h1>Animal Art</h1>
             </Link>
-            <AuthMenu />
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="size-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
-                <SheetHeader>
-                  <SheetTitle>
-                    <Image
-                      src={myLogo}
-                      alt="Logo"
-                      className="ml-1 cursor-pointer rounded-full"
-                      height={60}
-                    />
-                    Animal Art
-                  </SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col gap-6 p-4">
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className="flex w-full flex-col gap-4"
-                  >
-                    {menu.map((item) => renderMobileMenuItem(item))}
-                  </Accordion>
-                </div>
-              </SheetContent>
-            </Sheet>
+            <div className="flex items-center gap-2">
+              <Link href="/cart" className="flex items-center gap-2 mr-4">
+                <ShoppingCartIcon className="size-5" />
+                <span>Cart</span>
+              </Link>
+              {/* <AuthMenu /> */}
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button className="mr-2" variant="outline" size="icon">
+                    <Menu className="size-4" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent className="overflow-y-auto">
+                  <SheetHeader>
+                    <SheetTitle>
+                      <Image
+                        src={myLogo}
+                        alt="Logo"
+                        className="ml-1 cursor-pointer rounded-full"
+                        height={60}
+                      />
+                      Animal Art
+                    </SheetTitle>
+                  </SheetHeader>
+                  <div className="flex flex-col gap-6 p-4">
+                    <Accordion
+                      type="single"
+                      collapsible
+                      className="flex w-full flex-col gap-4"
+                    >
+                      {menu.map((item) => renderMobileMenuItem(item))}
+                    </Accordion>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </div>

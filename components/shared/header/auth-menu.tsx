@@ -17,12 +17,12 @@ const AuthMenu = async () => {
   if (!session) {
     return (
       <>
-        <div className="flex-row md:flex gap-2">
+        <div className="flex-row py-4 md:flex gap-2">
           <Button asChild variant="outline" size="sm">
-            <Link href="/sign-in">New sign in</Link>
+            <Link href="/sign-in">Sign In</Link>
           </Button>
-          <Button asChild size="sm">
-            <Link href="/sign-up">new sign up</Link>
+          <Button variant="secondary" asChild size="sm">
+            <Link href="/sign-up">Sign Up</Link>
           </Button>
         </div>
       </>

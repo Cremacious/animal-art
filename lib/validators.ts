@@ -55,13 +55,11 @@ export const signInFormSchema = z.object({
 });
 
 export const shippingAddressSchema = z.object({
-  fullName: z.string().min(3, 'Full Name must be at least 3 characters long'),
-  streetAddress: z
-    .string()
-    .min(3, 'Street Address must be at least 3 characters long'),
-  city: z.string().min(3, 'City must be at least 3 characters long'),
-  state: z.string().min(1, 'State must be at least 1 character long'),
-  zipCode: z.string().min(3, 'Zip Code must be at least 3 characters long'),
-  country: z.string().min(3, 'Country must be at least 3 characters long'),
+  fullName: z.string().min(3, 'Name must be at least 3 characters'),
+  streetAddress: z.string().min(3, 'Address must be at least 3 characters'),
+  city: z.string().min(3, 'City must be at least 3 characters'),
+  postalCode: z.string().min(3, 'Postal code must be at least 3 characters'),
+  country: z.string().min(3, 'Country must be at least 3 characters'),
+  lat: z.number().optional(),
+  lng: z.number().optional(),
 });
-
