@@ -148,7 +148,9 @@ export const MainNavbar = ({
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
               <img src={logo.src} className="max-h-8" alt={logo.alt} />
+              <h1>Animal Art</h1>
             </a>
+            <AuthMenu />
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -171,15 +173,6 @@ export const MainNavbar = ({
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
                   </Accordion>
-
-                  <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <a href={auth.login.url}>{auth.login.title}</a>
-                    </Button>
-                    <Button asChild>
-                      <a href={auth.signup.url}>{auth.signup.title}</a>
-                    </Button>
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>
