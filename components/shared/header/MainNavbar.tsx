@@ -23,6 +23,9 @@ import {
 
 import AuthMenu from './auth-menu';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import Link from 'next/link';
+import myLogo from '@/public/images/newLogo.jpg';
 
 interface MenuItem {
   title: string;
@@ -53,12 +56,6 @@ interface Navbar1Props {
 }
 
 export const MainNavbar = ({
-  logo = {
-    url: 'https://www.shadcnblocks.com',
-    src: 'https://shadcnblocks.com/images/block/logos/shadcnblockscom-icon.svg',
-    alt: 'logo',
-    title: 'Animal Art',
-  },
   menu = [
     { title: 'Home', url: '#' },
     {
@@ -66,41 +63,19 @@ export const MainNavbar = ({
       url: '/search',
     },
     {
-      title: 'Resources',
+      title: 'Commission',
       url: '#',
       items: [
         {
-          title: 'Help Center',
-          description: 'Get all the answers you need right here',
+          title: 'Request Custom Art',
+          description: 'Upload a photo of your pet for a custom painting',
           icon: <Zap className="size-5 shrink-0" />,
-          url: '#',
-        },
-        {
-          title: 'Contact Us',
-          description: 'We are here to help you with any questions you have',
-          icon: <Sunset className="size-5 shrink-0" />,
-          url: '#',
-        },
-        {
-          title: 'Status',
-          description: 'Check the current status of our services and APIs',
-          icon: <Trees className="size-5 shrink-0" />,
-          url: '#',
-        },
-        {
-          title: 'Terms of Service',
-          description: 'Our terms and conditions for using our services',
-          icon: <Book className="size-5 shrink-0" />,
           url: '#',
         },
       ],
     },
     {
-      title: 'Pricing',
-      url: '#',
-    },
-    {
-      title: 'Blog',
+      title: 'About',
       url: '#',
     },
   ],
@@ -116,12 +91,17 @@ export const MainNavbar = ({
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8" alt={logo.alt} />
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src={myLogo}
+                alt="Logo"
+                className="ml-1 cursor-pointer rounded-full"
+                height={60}
+              />
               <span className="text-lg font-semibold tracking-tighter">
-                {logo.title}
+                Animal Art
               </span>
-            </a>
+            </Link>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -132,24 +112,21 @@ export const MainNavbar = ({
           </div>
           {/* <Menu /> */}
           <AuthMenu />
-          {/* <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
-              <a href={auth.login.url}>{auth.login.title}</a>
-            </Button>
-            <Button asChild size="sm">
-              <a href={auth.signup.url}>{auth.signup.title}</a>
-            </Button>
-          </div> */}
         </nav>
 
         {/* Mobile Menu */}
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8" alt={logo.alt} />
+            <Link href="/" className="flex items-center gap-2">
+              <Image
+                src={myLogo}
+                alt="Logo"
+                className="ml-1 cursor-pointer rounded-full"
+                height={60}
+              />
               <h1>Animal Art</h1>
-            </a>
+            </Link>
             <AuthMenu />
             <Sheet>
               <SheetTrigger asChild>
@@ -160,9 +137,13 @@ export const MainNavbar = ({
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2">
-                      <img src={logo.src} className="max-h-8" alt={logo.alt} />
-                    </a>
+                    <Image
+                      src={myLogo}
+                      alt="Logo"
+                      className="ml-1 cursor-pointer rounded-full"
+                      height={60}
+                    />
+                    Animal Art
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
