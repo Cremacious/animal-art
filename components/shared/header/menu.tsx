@@ -18,16 +18,14 @@ const Main = async () => {
   if (!session) {
     return (
       <>
-        <Button asChild>
-          <Link href="/sign-in">
-            <UserIcon /> Sign In
-          </Link>
-        </Button>
-        <Button asChild>
-          <Link href="/sign-up">
-            <UserIcon /> Sign Up
-          </Link>
-        </Button>
+        <div className="flex gap-2">
+          <Button asChild variant="outline" size="sm">
+            <Link href="/sign-in">New sign in</Link>
+          </Button>
+          <Button asChild size="sm">
+            <Link href="/sign-up">new sign up</Link>
+          </Button>
+        </div>
       </>
     );
   }
