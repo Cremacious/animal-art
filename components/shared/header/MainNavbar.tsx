@@ -9,9 +9,9 @@ const MainNavbar = () => {
   return (
     <>
       <nav className="bg-white mb-2 border-b border-gray-200">
-        <div className="container mx-auto px-4 flex items-center justify-between h-16">
+        <div className="container mx-auto px-4 flex flex-row items-center justify-between h-16">
           {/* Logo */}
-          <div className="">
+          <div className="flex flex-row items-center">
             <Link href="/">
               <Image
                 src={newLogo}
@@ -20,6 +20,7 @@ const MainNavbar = () => {
                 height={60}
               />
             </Link>
+            <h1 className="ml-2">Logo Here</h1>
           </div>
 
           <div className="flex space-x-8">

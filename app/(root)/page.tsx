@@ -8,7 +8,7 @@ const Homepage = async () => {
 
   return (
     <>
-      <div className="">
+      <div className="bg-white rounded-2xl flex justify-center items-center w-sm md:w-7xl mx-auto">
         <HomepageHero />
       </div>
     </>
