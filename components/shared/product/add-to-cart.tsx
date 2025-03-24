@@ -31,7 +31,6 @@ const AddToCart = ({ item, cart }: { item: CartItem; cart?: Cart }) => {
     });
   };
 
-
   const handleRemoveFromCart = async () => {
     const res = await removeItemFromCart(item.productId);
     if (!res.success) return toast.error(res.message);
@@ -41,22 +40,20 @@ const AddToCart = ({ item, cart }: { item: CartItem; cart?: Cart }) => {
   };
 
   return existItem ? (
-    <div className="flex flex-row">
+    <div className="w-full flex flex-row">
       <Button variant="outline" onClick={handleRemoveFromCart}>
         <Minus className="w-4 h-4" />
       </Button>
-      {/* <div className="w-1/2">
-        <p>In Cart: {existItem.quantity}</p>
-      </div> */}
-      <span className="px-2 items-center h-16">
-        In Cart: {existItem.quantity}
-      </span>
+      <Button variant="ghost" className="mx-2">
+        {item.quantity}
+      </Button>
+
       <Button onClick={handleAddToCart}>
         <Plus className="w-4 h-4" />
       </Button>
     </div>
   ) : (
-    <Button className="w-1/2" onClick={handleAddToCart}>
+    <Button className="w-full" onClick={handleAddToCart}>
       <Plus className="w-4 h-4" />
       Add to cart
     </Button>

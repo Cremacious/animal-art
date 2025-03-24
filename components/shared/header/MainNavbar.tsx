@@ -57,7 +57,7 @@ interface Navbar1Props {
 
 export const MainNavbar = ({
   menu = [
-    { title: 'Home', url: '#' },
+    { title: 'Home', url: '/' },
     {
       title: 'Gallery',
       url: '/search',
@@ -76,13 +76,9 @@ export const MainNavbar = ({
     },
     {
       title: 'About',
-      url: '#',
+      url: '/about',
     },
   ],
-  auth = {
-    login: { title: 'Login', url: '/sign-in' },
-    signup: { title: 'Sign up', url: '#' },
-  },
 }: Navbar1Props) => {
   return (
     <section className="py-4 mb-4 bg-white">

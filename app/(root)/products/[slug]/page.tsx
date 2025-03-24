@@ -26,8 +26,8 @@ const ProductPage = async ({
     return <NotFoundPage />;
   }
   return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-5">
+    <div className="bg-blue-100 container mx-auto p-4 rounded-2xl">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
         <div className="col-span-2">
           <ProductImages images={product.images} />
         </div>
@@ -41,32 +41,39 @@ const ProductPage = async ({
               <p>Animal: {product.animalType} </p>
               <p>Size: {product.size} </p>
             </CardContent>
-            {/* <CardFooter>
-              <p>Card Footer</p>
-            </CardFooter> */}
           </Card>
         </div>
         <div className="col-span-1">
-          {Number(product.price)}
-
           {product.stock > 0 && (
-            <div className="flex-center">
-              <AddToCart
-                cart={cart}
-                item={{
-                  productId: product.id,
-                  name: product.name,
-                  slug: product.slug,
-                  price: product.price.toString(),
-                  quantity: 1,
-                  image: product.images![0],
-                }}
-              />
+            <div className="flex flex-col">
+              <Card>
+                <CardHeader>
+                  <CardTitle>In Stock</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <h2 className="w-24 rounded-full bg-green-100 px-5 py-2 text-green-700">
+                    ${Number(product.price)}{' '}
+                  </h2>
+                </CardContent>
+                <CardFooter>
+                  <AddToCart
+                    cart={cart}
+                    item={{
+                      productId: product.id,
+                      name: product.name,
+                      slug: product.slug,
+                      price: product.price.toString(),
+                      quantity: 1,
+                      image: product.images![0],
+                    }}
+                  />
+                </CardFooter>
+              </Card>
             </div>
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
