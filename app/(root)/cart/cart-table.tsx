@@ -10,7 +10,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { addItemToCart, removeItemFromCart } from '@/lib/actions/cart.actions';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  removeProductTypeFromCart,
+} from '@/lib/actions/cart.actions';
 
 import { Button } from '@/components/ui/button';
 import { Cart } from '@/types';
@@ -40,8 +44,11 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
           <div className="grid md:grid-cols-3 gap-10 mt-8">
             <div className="md:col-span-2 space-y-4">
               {/* Product cards */}
-              {cart.items.map((item) => (
-                <div className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(61,63,68,0.3)]">
+              {cart.items.map((item, key) => (
+                <div
+                  key={key}
+                  className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(61,63,68,0.3)]"
+                >
                   <div className="flex gap-4">
                     <div className="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
                       <Image
@@ -106,20 +113,60 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                   <div className="ml-auto flex flex-col">
                     <div className="flex items-start gap-4 justify-end">
                       {/* Trashcan */}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-4 h-4 cursor-pointer fill-slate-400 hover:fill-red-600 inline-block"
-                        viewBox="0 0 24 24"
+                      <Button
+                        disabled={isPending}
+                        variant="outline"
+                        type="button"
+                        onClick={() =>
+                          startTransition(async () => {
+                            const res = await removeProductTypeFromCart(
+                              item.productId
+                            );
+                            if (!res.success) {
+                              toast.error(res.message);
+                            }
+                          })
+                        }
                       >
-                        <path
-                          d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
-                          data-original="#000000"
-                        />
-                        <path
-                          d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
-                          data-original="#000000"
-                        />
-                      </svg>
+                        {isPending ? (
+                          <Loader className="w-4 h-4  animate-spin" />
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-4 h-4 cursor-pointer fill-slate-400 hover:fill-red-600 inline-block"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
+                              data-original="#000000"
+                            />
+                            <path
+                              d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
+                              data-original="#000000"
+                            />
+                          </svg>
+                        )}
+                      </Button>
+                      {/* <Button
+                        onClick={() => {
+                          const res = removeProductTypeFromCart(item.productId);
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-4 h-4 cursor-pointer fill-slate-400 hover:fill-red-600 inline-block"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
+                            data-original="#000000"
+                          />
+                          <path
+                            d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
+                            data-original="#000000"
+                          />
+                        </svg>
+                      </Button> */}
                     </div>
                     <h3 className="text-sm sm:text-base font-semibold text-slate-900 mt-auto">
                       ${item.price} x {item.quantity}
