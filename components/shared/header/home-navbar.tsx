@@ -7,7 +7,7 @@ const HomeNavbar = () => {
     <>
       <header className="flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
         <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
-          <a href="javascript:void(0)" className="max-sm:hidden">
+          {/* <a href="javascript:void(0)" className="max-sm:hidden"> */}
             {/* <img
               src="https://readymadeui.com/readymadeui.svg"
               alt="logo"
