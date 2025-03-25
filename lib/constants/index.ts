@@ -5,3 +5,10 @@ export const shippingAddressDefaultValues = {
   postalCode: '',
   country: '',
 };
+
+export const signUpDefaultValues = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};

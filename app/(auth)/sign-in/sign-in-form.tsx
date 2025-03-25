@@ -24,7 +24,6 @@ const SignInForm = () => {
 
   const SignInButton = () => {
     const { pending } = useFormStatus();
-
     return (
       <Button variant="default" disabled={pending} className="w-full">
         {pending ? 'Signing in...' : 'Sign In'}

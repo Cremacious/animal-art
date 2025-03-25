@@ -1,70 +1,102 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
+'use client';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
+import { signUp } from '@/lib/actions/user.actions';
+import { signUpDefaultValues } from '@/lib/constants';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
+import { useSearchParams } from 'next/navigation';
 
-export function SignUpForm({
-  className,
-  ...props
-}: React.ComponentProps<'div'>) {
+const SignUpForm = () => {
+  const [data, action] = useActionState(signUp, {
+    message: '',
+    success: false,
+  });
+
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+
+  const SignUpButton = () => {
+    const { pending } = useFormStatus();
+    return (
+      <Button disabled={pending} className="w-full" variant="default">
+        {pending ? 'Submitting...' : 'Sign Up'}
+      </Button>
+    );
+  };
+
   return (
-    <div className={cn('flex flex-col gap-6', className)} {...props}>
-      <Card>
-        <CardHeader>
-          <CardTitle>Create a new account!</CardTitle>
-          <CardDescription>
-          </CardDescription>
-            Enter your information to create an account
-        </CardHeader>
-        <CardContent>
-          <form>
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-3">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                </div>
-                <Input id="password" type="password" required />
-                <div className="flex items-center">
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
-                </div>
-                <Input id="password" type="password" required />
-              </div>
-              <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
-                  Create Account
-                </Button>
-                <Button variant="outline" className="w-full">
-                  Login with Google
-                </Button>
-              </div>
-            </div>
-            <div className="mt-4 text-center text-sm">
-              Already have an account?{' '}
-              <Link href="/sign-in" className="underline underline-offset-4">
-                Sign in
-              </Link>
-            </div>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+    <form action={action}>
+      <input type="hidden" name="callbackUrl" value={callbackUrl} />
+      <div className="space-y-6">
+        <div>
+          <Label htmlFor="name">Name</Label>
+          <Input
+            id="name"
+            name="name"
+            required
+            type="text"
+            defaultValue={signUpDefaultValues.name}
+            autoComplete="name"
+          />
+        </div>
+        <div>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            name="email"
+            required
+            type="email"
+            defaultValue={signUpDefaultValues.email}
+            autoComplete="email"
+          />
+        </div>
+        <div>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            id="password"
+            name="password"
+            required
+            type="password"
+            defaultValue={signUpDefaultValues.password}
+            autoComplete="current-password"
+          />
+        </div>
+        <div>
+          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <Input
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            type="password"
+            defaultValue={signUpDefaultValues.confirmPassword}
+            autoComplete="current-password"
+          />
+        </div>
+        <div>
+          <SignUpButton />
+        </div>
+
+        {!data.success && (
+          <div className="text-center text-destructive">{data.message}</div>
+        )}
+
+        <div className="text-sm text-center text-muted-foreground">
+          Already have an account?{' '}
+          <Link
+            target="_self"
+            className="link"
+            href={`/sign-in?callbackUrl=${callbackUrl}`}
+          >
+            Sign In
+          </Link>
+        </div>
+      </div>
+    </form>
   );
-}
+};
+
+export default SignUpForm;
