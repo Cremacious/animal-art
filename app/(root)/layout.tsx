@@ -1,8 +1,7 @@
-
-
 // import Footer from '@/components/footer';
-
+import HomeNavbar from '@/components/shared/header/home-navbar';
 import MainNavbar from '@/components/shared/header/MainNavbar';
+import { Home } from 'lucide-react';
 
 export default function RootLayout({
   children,
@@ -11,7 +10,8 @@ export default function RootLayout({
 }>) {
   return (
     <div className="flex flex-col">
-      <MainNavbar />
+      {/* <MainNavbar /> */}
+      <HomeNavbar />
       <div className="flex flex-1 overflow-hidden">
         <main className="flex-1 wrapper relative z-10">{children}</main>
       </div>

@@ -18,11 +18,13 @@ const AuthMenu = async () => {
     return (
       <>
         <div className="flex-row py-4 md:flex gap-2">
-          <Button asChild variant="outline" size="sm">
+          <Button
+            className=" hover:bg-teal-100 px-4 py-4 rounded-md text-black text-[15px] font-medium flex items-center justify-center gap-2"
+            asChild
+            variant="outline"
+            size="sm"
+          >
             <Link href="/sign-in">Sign In</Link>
-          </Button>
-          <Button variant="secondary" asChild size="sm">
-            <Link href="/sign-up">Sign Up</Link>
           </Button>
         </div>
       </>
