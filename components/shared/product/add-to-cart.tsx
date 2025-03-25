@@ -44,7 +44,7 @@ const AddToCart = ({ item, cart }: { item: CartItem; cart?: Cart }) => {
       <Button variant="outline" onClick={handleRemoveFromCart}>
         <Minus className="w-4 h-4" />
       </Button>
-      <Button variant="ghost" className="mx-2">
+      <Button variant="ghost" className="mx-1">
         <p>{existItem.quantity}</p>
       </Button>
 
@@ -53,7 +53,7 @@ const AddToCart = ({ item, cart }: { item: CartItem; cart?: Cart }) => {
       </Button>
     </div>
   ) : (
-    <Button variant="outline" className="w-full" onClick={handleAddToCart}>
+    <Button variant="outline" onClick={handleAddToCart}>
       <Plus className="w-4 h-4" />
       Add to cart
     </Button>

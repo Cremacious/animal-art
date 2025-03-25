@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/card';
 
 import AddToCart from '@/components/shared/product/add-to-cart';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import NotFoundPage from '@/app/not-found';
 import ProductImages from '@/components/shared/product/product-images';
@@ -46,13 +47,13 @@ const ProductPage = async ({
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <Image
-            className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+            className=" rounded-tl-2xl rounded-bl-2xl lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center p-4 bg-white"
             alt={product.name}
             src={product.images[0]}
             width={500}
             height={500}
           />
-          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+          <div className=" bg-white rounded-tr-2xl rounded-br-2xl lg:w-1/2 w-full lg:pl-10 lg:p-6 mt-6 lg:mt-0">
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {product.name}
             </h1>
@@ -66,7 +67,7 @@ const ProductPage = async ({
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
-            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+            <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
               <div className="flex">
                 <span className="mr-3">Animal:</span>
                 {product.animalType}
@@ -76,8 +77,8 @@ const ProductPage = async ({
                 {product.size}
               </div>
             </div>
-            <div className="flex">
-              <span className="title-font font-medium text-2xl text-gray-900">
+            <div className="flex flex-row justify-evenly items-center">
+              <span className="title-font bg-teal-100 rounded-xl  font-medium text-2xl p-2 text-gray-900">
                 ${Number(product.price)}
               </span>
               {/* <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
