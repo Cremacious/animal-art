@@ -31,58 +31,35 @@ const AuthMenu = async () => {
     );
   }
   return (
-    <div className="flex gap-2 items-center">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <div className="flex items-center">
-            <Button
-              variant="ghost"
-              className="relative rounded-lg ml-2 flex items-center justify-center hover:bg-teal-300 bg-teal-200"
-            >
-              Account Menu
+    <div>
+      <ul>
+        <li className="max-lg:border-b max-lg:py-3 px-3">
+          <Link
+            href="/"
+            className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+          >
+            Profile
+          </Link>
+        </li>
+        <li className="max-lg:border-b max-lg:py-3 px-3">
+          <Link
+            href="/"
+            className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+          >
+            Orders
+          </Link>
+        </li>
+        <li className="max-lg:border-b max-lg:py-3 px-3">
+          <Link
+            href="/"
+            className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+          >
+            <Button variant="link" onClick={signOutUser}>
+              Sign Out
             </Button>
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56" align="end" forceMount>
-          <DropdownMenuLabel className="font-normal">
-            <div className="flex flex-col space-y-1">
-              <div className="text-sm font-medium leading-none">
-                {session.user?.name}
-              </div>
-              <div className="text-sm text-muted-foreground leading-none">
-                {session.user?.email}
-              </div>
-            </div>
-          </DropdownMenuLabel>
-          <DropdownMenuItem>
-            <Link href="/user/profile" className="w-full">
-              Profile
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/user/orders" className="w-full">
-              Order History
-            </Link>
-          </DropdownMenuItem>
-          {/* {session.user?.role === 'admin' && (
-            <DropdownMenuItem>
-              <Link href="/admin/overview" className="w-full">
-                Admin
-              </Link>
-            </DropdownMenuItem>
-          )} */}
-          <DropdownMenuItem className="p-0 mb-1">
-            <form action={signOutUser} className="w-full">
-              <Button
-                className="w-full py-4 px-2 h-4 justify-start"
-                variant="ghost"
-              >
-                Sign Out
-              </Button>
-            </form>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
