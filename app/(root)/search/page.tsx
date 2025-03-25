@@ -122,7 +122,7 @@ const SearchPage = async (props: {
       </div>
 
       {/* Product Grid */}
-      <div className="md:w-3/4 w-full p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="md:w-3/4 w-full p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
         {products.data.map((product) => (
           <GalleryCard
             key={product.id}
