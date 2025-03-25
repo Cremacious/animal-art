@@ -6,6 +6,7 @@ import {
 } from '@/lib/actions/product.actions';
 
 import { Button } from '@/components/ui/button';
+import GalleryCard from '@/components/shared/product/gallery-card';
 import Link from 'next/link';
 import ProductCard from '@/components/shared/product/product-card';
 import React from 'react';
@@ -121,9 +122,9 @@ const SearchPage = async (props: {
       </div>
 
       {/* Product Grid */}
-      <div className="md:w-3/4 w-full p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="md:w-3/4 w-full p-4 grid grid-cols-1 md:grid-cols-4 gap-4">
         {products.data.map((product) => (
-          <ProductCard
+          <GalleryCard
             key={product.id}
             product={{ ...product, price: product.price.toString() }}
           />
