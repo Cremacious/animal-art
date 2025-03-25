@@ -12,7 +12,6 @@ export const config = {
   pages: {
     signIn: '/sign-in',
     error: '/sign-in',
-    newUser: '/',
   },
   session: {
     strategy: 'jwt' as const,
