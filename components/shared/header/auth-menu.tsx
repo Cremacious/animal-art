@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { auth } from '@/auth';
 import { signOutUser } from '@/lib/actions/user.actions';
 
-const AuthMenu = async () => {
+const SidebarAuthMenu = async () => {
   const session = await auth();
 
   if (!session) {
@@ -31,37 +31,39 @@ const AuthMenu = async () => {
     );
   }
   return (
-    <div>
-      <ul>
-        <li className="max-lg:border-b max-lg:py-3 px-3">
-          <Link
-            href="/"
-            className="hover:text-blue-700 text-blue-700 font-medium block text-base"
-          >
-            Profile
-          </Link>
-        </li>
-        <li className="max-lg:border-b max-lg:py-3 px-3">
-          <Link
-            href="/"
-            className="hover:text-blue-700 text-blue-700 font-medium block text-base"
-          >
-            Orders
-          </Link>
-        </li>
-        <li className="max-lg:border-b max-lg:py-3 px-3">
-          <Link
-            href="/"
-            className="hover:text-blue-700 text-blue-700 font-medium block text-base"
-          >
-            <Button variant="link" onClick={signOutUser}>
-              Sign Out
-            </Button>
-          </Link>
-        </li>
-      </ul>
-    </div>
+    <>
+      <div className="">
+        <ul>
+          <li className="max-lg:border-b max-lg:py-3 px-3">
+            <Link
+              href="/"
+              className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+            >
+              Profile
+            </Link>
+          </li>
+          <li className="max-lg:border-b max-lg:py-3 px-3">
+            <Link
+              href="/"
+              className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+            >
+              Orders
+            </Link>
+          </li>
+          <li className="max-lg:border-b max-lg:py-3 px-3">
+            <Link
+              href="/"
+              className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+            >
+              <Button variant="link" onClick={signOutUser}>
+                Sign Out
+              </Button>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 
-export default AuthMenu;
+export default SidebarAuthMenu;

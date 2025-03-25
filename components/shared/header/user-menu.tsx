@@ -12,7 +12,7 @@ import { UserIcon } from 'lucide-react';
 import { auth } from '@/auth';
 import { signOutUser } from '@/lib/actions/user.actions';
 
-const Main = async () => {
+const UserMenu = async () => {
   const session = await auth();
 
   if (!session) {
@@ -87,4 +87,4 @@ const Main = async () => {
   );
 };
 
-export default Main;
+export default UserMenu;

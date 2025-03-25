@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import AuthMenu from './auth-menu';
+import SidebarAuthMenu from './auth-menu';
 import {
   Sheet,
   SheetContent,
@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import UserMenu from './user-menu';
 import { Accordion } from '@/components/ui/accordion';
 
 const HomeNavbar = () => {
@@ -78,7 +79,10 @@ const HomeNavbar = () => {
             </ul>
           </div>
           <div className="flex items-center max-lg:ml-auto space-x-4">
-            <AuthMenu />
+            {/* <AuthMenu /> */}
+            <div className="hidden md:block">
+              <UserMenu />
+            </div>
             <div className="md:hidden">
               <Sheet>
                 <SheetTrigger asChild>
@@ -99,7 +103,7 @@ const HomeNavbar = () => {
                     </SheetTitle>
                   </SheetHeader>
                   <div className="flex flex-col gap-6 p-4 text-center">
-                    <AuthMenu />
+                    <SidebarAuthMenu />
                     <ul>
                       <li className="max-lg:border-b max-lg:py-3 px-3">
                         <Link
