@@ -56,7 +56,7 @@ const SearchPage = async (props: {
   return (
     <div className="flex flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="bg-white md:rounded-tr-2xl md:mt-4 shadow-md border-r py-6 px-4 overflow-auto w-full md:w-64">
+      <div className="bg-white md:rounded-r-2xl mb-4 shadow-md border-r py-6 px-4 overflow-auto w-full md:w-64">
         {/* Mobile Sidebar */}
         <div className="md:hidden grid grid-cols-3 gap-4">
           {/* Animal Type */}
@@ -94,7 +94,7 @@ const SearchPage = async (props: {
               Size
             </h6>
             <ul className="space-y-1">
-              <li className='text-center'>
+              <li className="text-center">
                 <Link
                   className="text-slate-700 underline"
                   href={getFilteredUrl({ s: 'all' })}
@@ -225,8 +225,8 @@ const SearchPage = async (props: {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex justify-center items-center">
-        <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center">
+      <div className="flex-grow flex justify-center items-start mx-4">
+        <div className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-white rounded-2xl shadow-lg w-full ">
           {products.data.map((product) => (
             <GalleryCard
               key={product.id}

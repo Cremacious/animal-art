@@ -7,7 +7,7 @@ import { Product } from '@/types';
 
 const GalleryCard = ({ product }: { product: Product }) => {
   return (
-    <div className="bg-white flex flex-col rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-105 transition-transform w-72">
+    <div className="bg-teal-100 border-8 border-teal-50 flex flex-col rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-105 transition-transform">
       {/* Image Container */}
       <div className="w-full aspect-[4/3] relative">
         <Image
@@ -27,7 +27,7 @@ const GalleryCard = ({ product }: { product: Product }) => {
         </div>
         <div className="flex justify-center">
           <Link href={`/products/${product.slug}`}>
-            <Button variant="outline">
+            <Button className="bg-white hover:bg-white text-black">
               <EyeIcon className="mr-1" />
               View
             </Button>
