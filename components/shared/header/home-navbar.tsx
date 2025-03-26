@@ -1,6 +1,3 @@
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import SidebarAuthMenu from './auth-menu';
 import {
   Sheet,
   SheetContent,
@@ -8,14 +5,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
-import UserMenu from './user-menu';
+
 import { Accordion } from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { Menu } from 'lucide-react';
+import SidebarAuthMenu from './auth-menu';
+import UserMenu from './user-menu';
 
 const HomeNavbar = () => {
   return (
     <>
-      <header className="flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
+      <header className=" mb-4 flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
         <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
           <a href="javascript:void(0)" className="max-sm:hidden">
             {/* <img

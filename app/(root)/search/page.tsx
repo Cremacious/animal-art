@@ -57,20 +57,20 @@ const SearchPage = async (props: {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <nav className="bg-white shadow-md border-r h-screen fixed top-0 left-0 w-64 py-6 px-4 overflow-auto">
+      <nav className="bg-white ml-2 rounded-2xl shadow-md border-r h-auto fixed left-0 w-64 py-6 px-4 overflow-auto">
         <ul>
           <li>
             <a
               href="javascript:void(0)"
               className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
             >
-              Dashboard
+              Search
             </a>
           </li>
         </ul>
         <div className="mt-4">
           <h6 className="text-blue-600 text-xs font-semibold px-4">
-            Information
+            Animal Type
           </h6>
           <ul className="mt-2 space-y-1">
             <li>
@@ -108,7 +108,7 @@ const SearchPage = async (props: {
           </ul>
         </div>
         <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">Income</h6>
+          <h6 className="text-blue-600 text-xs font-semibold px-4">Size</h6>
           <ul className="mt-2 space-y-1">
             <li>
               <a
@@ -145,7 +145,7 @@ const SearchPage = async (props: {
           </ul>
         </div>
         <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">Actions</h6>
+          <h6 className="text-blue-600 text-xs font-semibold px-4">Prices</h6>
           <ul className="mt-2 space-y-1">
             <li>
               <a
@@ -168,13 +168,15 @@ const SearchPage = async (props: {
       </nav>
 
       {/* Main Content */}
-      <div className="ml-64 p-4 grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-        {products.data.map((product) => (
-          <GalleryCard
-            key={product.id}
-            product={{ ...product, price: product.price.toString() }}
-          />
-        ))}
+      <div className="ml-64 flex-grow flex justify-center items-center">
+        <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center">
+          {products.data.map((product) => (
+            <GalleryCard
+              key={product.id}
+              product={{ ...product, price: product.price.toString() }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
