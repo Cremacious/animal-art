@@ -56,15 +56,15 @@ const SearchPage = async (props: {
   return (
     <div className="flex flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="bg-white rounded-2xl shadow-md border-r py-6 px-4 overflow-auto w-full md:w-64">
+      <div className="bg-white md:rounded-tr-2xl md:mt-4 shadow-md border-r py-6 px-4 overflow-auto w-full md:w-64">
         {/* Mobile Sidebar */}
-        <div className="block md:hidden grid grid-cols-3 gap-4">
+        <div className="md:hidden grid grid-cols-3 gap-4">
           {/* Animal Type */}
           <div>
-            <h6 className="text-teal-800 text-md font-semibold mb-2">
+            <h6 className="text-teal-800 text-center text-md font-semibold mb-2">
               Animal Type
             </h6>
-            <ul className="space-y-1">
+            <ul className="space-y-1 text-center">
               <li>
                 <Link
                   className="text-slate-700 underline"
@@ -90,10 +90,20 @@ const SearchPage = async (props: {
 
           {/* Size */}
           <div>
-            <h6 className="text-blue-600 text-md font-semibold mb-2">Size</h6>
+            <h6 className="text-blue-600 text-md text-center font-semibold mb-2">
+              Size
+            </h6>
             <ul className="space-y-1">
+              <li className='text-center'>
+                <Link
+                  className="text-slate-700 underline"
+                  href={getFilteredUrl({ s: 'all' })}
+                >
+                  Any size
+                </Link>
+              </li>
               {sizes.map((x) => (
-                <li key={x.size}>
+                <li className="text-center" key={x.size}>
                   <Link
                     href={getFilteredUrl({ s: x.size })}
                     className={`block text-slate-700 ${
@@ -109,7 +119,9 @@ const SearchPage = async (props: {
 
           {/* Prices */}
           <div>
-            <h6 className="text-blue-600 text-md font-semibold mb-2">Prices</h6>
+            <h6 className="text-blue-600 text-md text-center font-semibold mb-2">
+              Prices
+            </h6>
             <ul className="space-y-1">
               {/* {prices.map((x) => (
                 <li key={x.price}>
@@ -130,23 +142,27 @@ const SearchPage = async (props: {
         {/* Desktop Sidebar */}
         <div className="hidden md:block">
           <ul>
-            <li>
+            <li className="text-center">
               <Link href="/search">
                 <Button className="w-full">Clear Search</Button>
               </Link>
             </li>
           </ul>
           <div className="mt-4">
-            <h6 className="text-teal-800 text-md font-semibold">Animal Type</h6>
+            <h6 className="text-teal-800 text-md text-center font-semibold">
+              Animal Type
+            </h6>
             <ul className="mt-2 space-y-1">
-              <Link
-                className="text-slate-700 underline"
-                href={getFilteredUrl({ a: 'all' })}
-              >
-                Any
-              </Link>
+              <li className="text-center">
+                <Link
+                  className="text-slate-700"
+                  href={getFilteredUrl({ a: 'all' })}
+                >
+                  Any
+                </Link>
+              </li>
               {types.map((x) => (
-                <li key={x.animalType}>
+                <li className="text-center" key={x.animalType}>
                   <Link
                     href={getFilteredUrl({ a: x.animalType })}
                     className={`block text-slate-700 ${
@@ -160,10 +176,20 @@ const SearchPage = async (props: {
             </ul>
           </div>
           <div className="mt-4">
-            <h6 className="text-blue-600 text-md font-semibold">Size</h6>
+            <h6 className="text-blue-600 text-md text-center font-semibold">
+              Size
+            </h6>
             <ul className="mt-2 space-y-1">
+              <li className="text-center">
+                <Link
+                  className="text-slate-700 underline"
+                  href={getFilteredUrl({ s: 'all' })}
+                >
+                  Any
+                </Link>
+              </li>
               {sizes.map((x) => (
-                <li key={x.size}>
+                <li className="text-center" key={x.size}>
                   <Link
                     href={getFilteredUrl({ s: x.size })}
                     className={`block text-slate-700 ${
@@ -177,7 +203,9 @@ const SearchPage = async (props: {
             </ul>
           </div>
           <div className="mt-4">
-            <h6 className="text-blue-600 text-md font-semibold">Prices</h6>
+            <h6 className="text-blue-600 text-md text-center font-semibold">
+              Prices
+            </h6>
             <ul className="mt-2 space-y-1">
               {/* {prices.map((x) => (
                 <li key={x.price}>
