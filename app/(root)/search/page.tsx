@@ -8,7 +8,6 @@ import {
 import { Button } from '@/components/ui/button';
 import GalleryCard from '@/components/shared/product/gallery-card';
 import Link from 'next/link';
-import ProductCard from '@/components/shared/product/product-card';
 import React from 'react';
 import { capitalizeFirstLetter } from '@/lib/utils';
 
@@ -52,106 +51,153 @@ const SearchPage = async (props: {
 
   const types = await getAllTypes();
   const sizes = await getAllSizes();
-  const prices = await getAllPrices(); // TODO: Fix decimal error caused by Prisma
+  const prices = await getAllPrices();
 
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="bg-white ml-2 rounded-2xl shadow-md border-r h-auto fixed left-0 w-64 py-6 px-4 overflow-auto">
-        <ul>
-          <li>
-            <Link href="/search">
-              <Button className="w-full">Clear Search</Button>
-            </Link>
-          </li>
-        </ul>
-        <div className="mt-4 text-center">
-          <h6 className="text-teal-800 text-md text-center font-semibold px-4">
-            Animal Type
-          </h6>
-          <ul className="mt-2 space-y-1">
-            <Link
-              className=" text-slate-700 underline"
-              href={getFilteredUrl({ a: 'all' })}
-            >
-              Any
-            </Link>
-            {types.map((x) => (
-              <li key={x.animalType}>
+      <div className="bg-white rounded-2xl shadow-md border-r py-6 px-4 overflow-auto w-full md:w-64">
+        {/* Mobile Sidebar */}
+        <div className="block md:hidden grid grid-cols-3 gap-4">
+          {/* Animal Type */}
+          <div>
+            <h6 className="text-teal-800 text-md font-semibold mb-2">
+              Animal Type
+            </h6>
+            <ul className="space-y-1">
+              <li>
                 <Link
-                  href={getFilteredUrl({ a: x.animalType })}
-                  className={`block text-slate-700 ${
-                    animalType === x.animalType ? 'font-bold' : ''
-                  }`}
+                  className="text-slate-700 underline"
+                  href={getFilteredUrl({ a: 'all' })}
                 >
-                  {capitalizeFirstLetter(x.animalType)}
+                  Any
                 </Link>
               </li>
-            ))}
-          </ul>
+              {types.map((x) => (
+                <li key={x.animalType}>
+                  <Link
+                    href={getFilteredUrl({ a: x.animalType })}
+                    className={`block text-slate-700 ${
+                      animalType === x.animalType ? 'font-bold' : ''
+                    }`}
+                  >
+                    {capitalizeFirstLetter(x.animalType)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Size */}
+          <div>
+            <h6 className="text-blue-600 text-md font-semibold mb-2">Size</h6>
+            <ul className="space-y-1">
+              {sizes.map((x) => (
+                <li key={x.size}>
+                  <Link
+                    href={getFilteredUrl({ s: x.size })}
+                    className={`block text-slate-700 ${
+                      size === x.size ? 'font-bold' : ''
+                    }`}
+                  >
+                    {capitalizeFirstLetter(x.size)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Prices */}
+          <div>
+            <h6 className="text-blue-600 text-md font-semibold mb-2">Prices</h6>
+            <ul className="space-y-1">
+              {/* {prices.map((x) => (
+                <li key={x.price}>
+                  <Link
+                    href={getFilteredUrl({ p: x.price })}
+                    className={`block text-slate-700 ${
+                      price === x.price ? 'font-bold' : ''
+                    }`}
+                  >
+                    {x.price}
+                  </Link>
+                </li>
+              ))} */}
+            </ul>
+          </div>
         </div>
-        <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">Size</h6>
-          <ul className="mt-2 space-y-1">
+
+        {/* Desktop Sidebar */}
+        <div className="hidden md:block">
+          <ul>
             <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Earnings and taxes
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Refunds
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Declines
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Payouts Details
-              </a>
+              <Link href="/search">
+                <Button className="w-full">Clear Search</Button>
+              </Link>
             </li>
           </ul>
-        </div>
-        <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">Prices</h6>
-          <ul className="mt-2 space-y-1">
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+          <div className="mt-4">
+            <h6 className="text-teal-800 text-md font-semibold">Animal Type</h6>
+            <ul className="mt-2 space-y-1">
+              <Link
+                className="text-slate-700 underline"
+                href={getFilteredUrl({ a: 'all' })}
               >
-                Profile
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Logout
-              </a>
-            </li>
-          </ul>
+                Any
+              </Link>
+              {types.map((x) => (
+                <li key={x.animalType}>
+                  <Link
+                    href={getFilteredUrl({ a: x.animalType })}
+                    className={`block text-slate-700 ${
+                      animalType === x.animalType ? 'font-bold' : ''
+                    }`}
+                  >
+                    {capitalizeFirstLetter(x.animalType)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-4">
+            <h6 className="text-blue-600 text-md font-semibold">Size</h6>
+            <ul className="mt-2 space-y-1">
+              {sizes.map((x) => (
+                <li key={x.size}>
+                  <Link
+                    href={getFilteredUrl({ s: x.size })}
+                    className={`block text-slate-700 ${
+                      size === x.size ? 'font-bold' : ''
+                    }`}
+                  >
+                    {capitalizeFirstLetter(x.size)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-4">
+            <h6 className="text-blue-600 text-md font-semibold">Prices</h6>
+            <ul className="mt-2 space-y-1">
+              {/* {prices.map((x) => (
+                <li key={x.price}>
+                  <Link
+                    href={getFilteredUrl({ p: x.price })}
+                    className={`block text-slate-700 ${
+                      price === x.price ? 'font-bold' : ''
+                    }`}
+                  >
+                    {x.price}
+                  </Link>
+                </li>
+              ))} */}
+            </ul>
+          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="ml-64 flex-grow flex justify-center items-center">
+      <div className="flex-grow flex justify-center items-center">
         <div className="p-4 grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center">
           {products.data.map((product) => (
             <GalleryCard
