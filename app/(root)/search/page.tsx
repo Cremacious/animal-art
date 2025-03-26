@@ -57,54 +57,37 @@ const SearchPage = async (props: {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <nav className="bg-white ml-2 rounded-2xl shadow-md border-r h-auto fixed left-0 w-64 py-6 px-4 overflow-auto">
+      <div className="bg-white ml-2 rounded-2xl shadow-md border-r h-auto fixed left-0 w-64 py-6 px-4 overflow-auto">
         <ul>
           <li>
-            <a
-              href="javascript:void(0)"
-              className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-            >
-              Search
-            </a>
+            <Link href="/search">
+              <Button className="w-full">Clear Search</Button>
+            </Link>
           </li>
         </ul>
-        <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">
+        <div className="mt-4 text-center">
+          <h6 className="text-teal-800 text-md text-center font-semibold px-4">
             Animal Type
           </h6>
           <ul className="mt-2 space-y-1">
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Audience
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Posts
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Schedules
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Promote
-              </a>
-            </li>
+            <Link
+              className=" text-slate-700 underline"
+              href={getFilteredUrl({ a: 'all' })}
+            >
+              Any
+            </Link>
+            {types.map((x) => (
+              <li key={x.animalType}>
+                <Link
+                  href={getFilteredUrl({ a: x.animalType })}
+                  className={`block text-slate-700 ${
+                    animalType === x.animalType ? 'font-bold' : ''
+                  }`}
+                >
+                  {capitalizeFirstLetter(x.animalType)}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="mt-4">
@@ -165,7 +148,7 @@ const SearchPage = async (props: {
             </li>
           </ul>
         </div>
-      </nav>
+      </div>
 
       {/* Main Content */}
       <div className="ml-64 flex-grow flex justify-center items-center">
