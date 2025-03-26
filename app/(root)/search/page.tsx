@@ -55,74 +55,120 @@ const SearchPage = async (props: {
   const prices = await getAllPrices(); // TODO: Fix decimal error caused by Prisma
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <div className="md:w-1/4 bg-gray-100 p-4">
-        <div className="mb-4">
-          <Link href="/search">
-            <Button className="w-full">Clear Search</Button>
-          </Link>
-        </div>
-
-        {/* Animal Type Filter */}
-        <div className="mb-4">
-          <h2 className="text-lg font-bold mb-2">Animal Type</h2>
-          <ul className="flex flex-wrap md:flex-col gap-2">
-            {types.map((x) => (
-              <li key={x.animalType}>
-                <Link
-                  href={getFilteredUrl({ a: x.animalType })}
-                  className={`block ${
-                    animalType === x.animalType ? 'font-bold text-blue-600' : ''
-                  }`}
-                >
-                  {capitalizeFirstLetter(x.animalType)}
-                </Link>
-              </li>
-            ))}
+    <div className="flex">
+      {/* Sidebar */}
+      <nav className="bg-white shadow-md border-r h-screen fixed top-0 left-0 w-64 py-6 px-4 overflow-auto">
+        <ul>
+          <li>
+            <a
+              href="javascript:void(0)"
+              className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+            >
+              Dashboard
+            </a>
+          </li>
+        </ul>
+        <div className="mt-4">
+          <h6 className="text-blue-600 text-xs font-semibold px-4">
+            Information
+          </h6>
+          <ul className="mt-2 space-y-1">
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Audience
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Posts
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Schedules
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Promote
+              </a>
+            </li>
           </ul>
         </div>
-
-        {/* Size Filter */}
-        <div className="mb-4">
-          <h2 className="text-lg font-bold mb-2">Sizes</h2>
-          <ul className="flex flex-wrap md:flex-col gap-2">
-            {sizes.map((x) => (
-              <li key={x.size}>
-                <Link
-                  href={getFilteredUrl({ s: x.size })}
-                  className={`block ${
-                    size === x.size ? 'font-bold text-blue-600' : ''
-                  }`}
-                >
-                  {x.size}
-                </Link>
-              </li>
-            ))}
+        <div className="mt-4">
+          <h6 className="text-blue-600 text-xs font-semibold px-4">Income</h6>
+          <ul className="mt-2 space-y-1">
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Earnings and taxes
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Refunds
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Declines
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Payouts Details
+              </a>
+            </li>
           </ul>
         </div>
-
-        {/* Price Filter */}
-        <div className="mb-4">
-          <h2 className="text-lg font-bold mb-2">Prices</h2>
-          <ul className="flex flex-wrap md:flex-col gap-2">
-            {/* {prices.map((x) => (
-              <li key={x.price}>
-                <Link
-                  href={getFilteredUrl({ p: x.price })}
-                  className={`block ${
-                    price === x.price ? 'font-bold text-blue-600' : ''
-                  }`}
-                >
-                  {x.price}
-                </Link>
-              </li>
-            ))} */}
+        <div className="mt-4">
+          <h6 className="text-blue-600 text-xs font-semibold px-4">Actions</h6>
+          <ul className="mt-2 space-y-1">
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Profile
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Logout
+              </a>
+            </li>
           </ul>
         </div>
-      </div>
+      </nav>
 
-      {/* Product Grid */}
-      <div className="md:w-3/4 w-full p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Main Content */}
+      <div className="ml-64 p-4 grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
         {products.data.map((product) => (
           <GalleryCard
             key={product.id}
