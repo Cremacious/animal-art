@@ -10,6 +10,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import SidebarAuthMenu from './auth-menu';
 import UserMenu from './user-menu';
 
@@ -81,6 +82,12 @@ const HomeNavbar = () => {
           </div>
           <div className="flex items-center max-lg:ml-auto space-x-4">
             {/* <AuthMenu /> */}
+            <Link href="/cart">
+              <Button variant="outline">
+                <ShoppingCart className="mr-2" />
+                Cart
+              </Button>
+            </Link>
             <div className="hidden md:block">
               <UserMenu />
             </div>
