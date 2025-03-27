@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import GalleryCard from '@/components/shared/product/gallery-card';
 import Link from 'next/link';
 import React from 'react';
-import { capitalizeFirstLetter } from '@/lib/utils';
 
 const SearchPage = async (props: {
   searchParams: Promise<{
@@ -81,7 +80,7 @@ const SearchPage = async (props: {
                       animalType === x.animalType ? 'font-bold' : ''
                     }`}
                   >
-                    {capitalizeFirstLetter(x.animalType)}
+                    {x.animalType}
                   </Link>
                 </li>
               ))}
@@ -110,7 +109,7 @@ const SearchPage = async (props: {
                       size === x.size ? 'font-bold' : ''
                     }`}
                   >
-                    {capitalizeFirstLetter(x.size)}
+                    {x.size}
                   </Link>
                 </li>
               ))}
@@ -169,7 +168,7 @@ const SearchPage = async (props: {
                       animalType === x.animalType ? 'font-bold' : ''
                     }`}
                   >
-                    {capitalizeFirstLetter(x.animalType)}
+                    {x.animalType}
                   </Link>
                 </li>
               ))}
@@ -196,7 +195,7 @@ const SearchPage = async (props: {
                       size === x.size ? 'font-bold' : ''
                     }`}
                   >
-                    {capitalizeFirstLetter(x.size)}
+                    {x.size}
                   </Link>
                 </li>
               ))}

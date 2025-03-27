@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { cartItemSchema } from './validators';
+import { z } from 'zod';
 // import qs from 'query-string';
 
 export function cn(...inputs: ClassValue[]) {
@@ -137,3 +139,25 @@ export const formatDateTime = (dateString: Date) => {
 //     }
 //   );
 // }
+
+export function convertProductPriceToString(product: any) {
+  return {
+    ...product,
+    price: product.price.toString(),
+  };
+}
+
+export const calcPrice = (items: z.infer<typeof cartItemSchema>[]) => {
+  const itemsPrice = round2(
+      items.reduce((acc, item) => acc + Number(item.price) * item.quantity, 0)
+    ),
+    shippingPrice = round2(itemsPrice > 100 ? 0 : 10),
+    taxPrice = round2(0.15 * itemsPrice),
+    totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
+  return {
+    itemsPrice: itemsPrice.toFixed(2),
+    shippingPrice: shippingPrice.toFixed(2),
+    taxPrice: taxPrice.toFixed(2),
+    totalPrice: totalPrice.toFixed(2),
+  };
+};
