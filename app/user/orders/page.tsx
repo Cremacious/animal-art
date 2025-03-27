@@ -10,22 +10,28 @@ import { formatCurrency, formatDateTime, formatId } from '@/lib/utils';
 
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { Order } from '@/types';
 import { getMyOrders } from '@/lib/actions/order.actions';
 
 export const metadata: Metadata = {
   title: 'My Orders',
 };
 
-const OrdersPage = async (props: {
-  searchParams: Promise<{ page: string }>;
-}) => {
-  const { page } = await props.searchParams;
-  const orders = await getMyOrders({
+const OrdersPage = async (props: { searchParams: { page: string } }) => {
+  const { page } = props.searchParams;
+  const ordersResponse = await getMyOrders({
     page: Number(page) || 1,
   });
 
-  console.log(orders);
+  const orders = {
+    ...ordersResponse,
+    data: ordersResponse.data.map((order) => ({
+      ...order,
+      itemsPrice: order.itemsPrice.toString(),
+      shippingPrice: order.shippingPrice.toString(),
+      taxPrice: order.taxPrice.toString(),
+      totalPrice: order.totalPrice.toString(),
+    })),
+  };
 
   return (
     <div className="space-y-2">
@@ -43,10 +49,12 @@ const OrdersPage = async (props: {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders.data.map((order: Order) => (
+            {orders.data.map((order) => (
               <TableRow key={order.id}>
                 <TableCell>{formatId(order.id)}</TableCell>
-                <TableCell> {formatCurrency(order.totalPrice)}</TableCell>
+                <TableCell>
+                  {formatDateTime(order.createdAt).dateOnly}
+                </TableCell>
                 <TableCell>{formatCurrency(order.totalPrice)}</TableCell>
                 <TableCell>
                   {order.isPaid && order.paidAt
