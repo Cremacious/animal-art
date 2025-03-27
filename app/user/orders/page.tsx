@@ -16,11 +16,13 @@ export const metadata: Metadata = {
   title: 'My Orders',
 };
 
-const OrdersPage = async (props: { searchParams: { page: string } }) => {
-  const { page } = props.searchParams;
-  const ordersResponse = await getMyOrders({
-    page: Number(page) || 1,
-  });
+const OrdersPage = async ({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) => {
+  const page = Number(searchParams.page) || 1; // Ensure page is a number
+  const ordersResponse = await getMyOrders({ page });
 
   const orders = {
     ...ordersResponse,
