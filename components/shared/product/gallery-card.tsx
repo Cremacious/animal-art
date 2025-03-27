@@ -7,7 +7,7 @@ import { Product } from '@/types';
 
 const GalleryCard = ({ product }: { product: Product }) => {
   return (
-    <div className="bg-teal-100 border-8 border-teal-50 flex flex-col rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-105 transition-transform">
+    <div className="bg-teal-100 border-8 border-teal-50 flex flex-col rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-105 transition-transform h-auto self-start">
       {/* Image Container */}
       <div className="w-full aspect-[4/3] relative">
         <Image
