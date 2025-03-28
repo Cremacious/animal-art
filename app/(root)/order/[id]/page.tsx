@@ -32,7 +32,7 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
   const user = session?.user?.id ? await getUserRole(session.user.id) : null;
   return (
     <>
-      <OrderDetailsTable
+      {/* <OrderDetailsTable
         order={{
           ...order,
           shippingAddress: formattedAddress, // Use the transformed address
@@ -45,8 +45,8 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
             price: item.price.toString(),
           })),
         }}
-      />
-      {/* <OrderDetailsTable
+      /> */}
+      <OrderDetailsTable
         order={{
           ...order,
           shippingAddress: formattedAddress, // Use the transformed address
@@ -61,7 +61,7 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
         }}
         paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
         isAdmin={user?.role === 'admin' || false}
-      /> */}
+      />
     </>
   );
 };
