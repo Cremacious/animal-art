@@ -44,6 +44,8 @@ const OrderDetailsPage = async (props: {
 
   return (
     <>
+      {' '}
+      order detail page
       {/* <OrderDetailsTable
         order={{
           ...order,
