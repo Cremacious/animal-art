@@ -5,15 +5,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { getUserRole, signOutUser } from '@/lib/actions/user.actions';
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { UserIcon } from 'lucide-react';
 import { auth } from '@/auth';
-import { signOutUser } from '@/lib/actions/user.actions';
+import { redirect } from 'next/navigation';
 
 const UserMenu = async () => {
   const session = await auth();
+
+  const user = session?.user?.id ? await getUserRole(session.user.id) : null;
 
   if (!session) {
     return (
@@ -64,13 +67,13 @@ const UserMenu = async () => {
               Order History
             </Link>
           </DropdownMenuItem>
-          {/* {session.user?.role === 'admin' && (
+          {user?.role === 'admin' && (
             <DropdownMenuItem>
               <Link href="/admin/overview" className="w-full">
                 Admin
               </Link>
             </DropdownMenuItem>
-          )} */}
+          )}
           <DropdownMenuItem className="p-0 mb-1">
             <form action={signOutUser} className="w-full">
               <Button

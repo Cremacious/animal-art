@@ -133,3 +133,13 @@ export async function updateUserPaymentMethod(
     return { success: false, message: formatError(error) };
   }
 }
+
+export async function getUserRole(userId: string) {
+  console.log('Fetching role for user ID:', userId); // Debugging
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { role: true },
+  });
+  console.log('User role:', user); // Debugging
+  return user;
+}
