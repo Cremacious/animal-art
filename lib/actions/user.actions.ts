@@ -142,3 +142,18 @@ export async function getUserRole(userId: string) {
   console.log('User role:', user); // Debugging
   return user;
 }
+
+export async function getUserAddress(userId: string) {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: {
+      address: true, // Assuming the address is stored in the `address` field
+    },
+  });
+
+  if (!user || !user.address) {
+    throw new Error('User address not found');
+  }
+
+  return user.address;
+}
