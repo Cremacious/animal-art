@@ -4,6 +4,7 @@ import { Check, Loader } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { createOrder } from '@/lib/actions/order.actions';
+import { toast } from 'sonner';
 import { useFormStatus } from 'react-dom';
 import { useRouter } from 'next/navigation';
 
@@ -28,7 +29,7 @@ const PlaceOrderForm = () => {
     event.preventDefault();
 
     const res = await createOrder();
-
+    toast.success(res.message);
     if (res.redirectTo) {
       router.push(res.redirectTo);
     }

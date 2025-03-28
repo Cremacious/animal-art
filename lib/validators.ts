@@ -98,7 +98,7 @@ export const insertOrderItemSchema = z.object({
   image: z.string(),
   name: z.string(),
   price: currency,
-  qty: z.number(),
+  quantity: z.number(),
 });
 
 export const paymentMethodSchema = z

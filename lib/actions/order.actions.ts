@@ -23,6 +23,7 @@ export async function createOrder() {
     if (!userId) throw new Error('User not found');
 
     const user = await getUserById(userId);
+    console.log('create order', userId, user);
 
     if (!cart || cart.items.length === 0) {
       return {
@@ -59,14 +60,16 @@ export async function createOrder() {
       totalPrice: cart.totalPrice,
       paymentResult: {},
     });
+    console.log('order', order);
 
     const insertedOrderId = await prisma.$transaction(async (tx) => {
       const insertedOrder = await tx.order.create({ data: order });
+      console.log('insertedOrder', insertedOrder);
       for (const item of cart.items as CartItem[]) {
         await tx.orderItem.create({
           data: {
             ...item,
-            qty: item.quantity,
+            quantity: item.quantity,
             price: item.price,
             orderId: insertedOrder.id,
           },
@@ -217,7 +220,7 @@ export async function updateOrderToPaid({
     for (const item of order.orderItems) {
       await tx.product.update({
         where: { id: item.productId },
-        data: { stock: { increment: -item.qty } },
+        data: { stock: { increment: -item.quantity } },
       });
     }
     await tx.order.update({
