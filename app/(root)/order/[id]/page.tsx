@@ -60,7 +60,6 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
           })),
         }}
         paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
-        isAdmin={user?.role === 'admin' || false}
       />
     </>
   );
