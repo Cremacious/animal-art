@@ -225,7 +225,7 @@ const SearchPage = async (props: {
 
       {/* Main Content */}
       <div className="flex-grow flex justify-center items-start mx-4 h-screen pb-8">
-        <div className="p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-white rounded-2xl shadow-lg w-full h-full content-start">
+        <div className="p-8 border-teal-100 border-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-white rounded-2xl shadow-lg w-full h-full content-start">
           {products.data.map((product) => (
             <GalleryCard
               key={product.id}

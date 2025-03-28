@@ -1,13 +1,12 @@
 import { notFound, redirect } from 'next/navigation';
 
 import { Metadata } from 'next';
-// import OrderDetailsTable from './order-details-table';
+import OrderDetailsTable from './order-details-table';
 import { ShippingAddress } from '@/types';
 // import Stripe from 'stripe';
 import { auth } from '@/auth';
 import { getOrderById } from '@/lib/actions/order.actions';
 import { getUserRole } from '@/lib/actions/user.actions';
-import { prisma } from '@/db/prisma';
 
 export const metadata: Metadata = {
   title: 'Order Details',
@@ -27,7 +26,6 @@ const OrderDetailsPage = async (props: {
 
   const user = session?.user?.id ? await getUserRole(session.user.id) : null;
 
-  // Redirect the user if they don't own the order
   if (order.userId !== session?.user?.id && user?.role !== 'admin') {
     return redirect('/unauthorized');
   }
@@ -45,16 +43,16 @@ const OrderDetailsPage = async (props: {
   // }
 
   return (
-    <></>
-    // <OrderDetailsTable
-    //   order={{
-    //     ...order,
-    //     shippingAddress: order.shippingAddress as ShippingAddress,
-    //   }}
-    //   stripeClientSecret={client_secret}
-    //   paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
-    //   isAdmin={session?.user?.role === 'admin' || false}
-    // />
+    <>
+      {/* <OrderDetailsTable
+        order={{
+          ...order,
+          shippingAddress: order.shippingAddress as ShippingAddress,
+        }}
+        paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
+        isAdmin={user?.role === 'admin' || false}
+      /> */}
+    </>
   );
 };
 

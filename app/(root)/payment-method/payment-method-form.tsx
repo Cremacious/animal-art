@@ -1,45 +1,60 @@
 'use client';
 
+import { ArrowRight, Loader } from 'lucide-react';
+import { DEFAULT_PAYMENT_METHOD, PAYMENT_METHODS } from '@/lib/constants';
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
-import { RadioGroup } from '@/components/ui/radio-group';
+import { Button } from '@/components/ui/button';
+import CheckoutSteps from '@/components/shared/checkout-steps';
+import { paymentMethodSchema } from '@/lib/validators';
+import { toast } from 'sonner';
+import { updateUserPaymentMethod } from '@/lib/actions/user.actions';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const PaymentMethodForm = () => {
-  //   const form = useForm<z.infer<typeof paymentMethodSchema>>({
-  //     resolver: zodResolver(paymentMethodSchema),
-  //     defaultValues: {
-  //       type: preferredPaymentMethod || DEFAULT_PAYMENT_METHOD,
-  //     },
-  //   });
+const PaymentMethodForm = ({
+  preferredPaymentMethod,
+}: {
+  preferredPaymentMethod: string | null;
+}) => {
+  const router = useRouter();
 
-  //   async function onSubmit(values: z.infer<typeof paymentMethodSchema>) {
-  //     startTransition(async () => {
-  //       const res = await updateUserPaymentMethod(values);
+  const form = useForm<z.infer<typeof paymentMethodSchema>>({
+    resolver: zodResolver(paymentMethodSchema),
+    defaultValues: {
+      type: preferredPaymentMethod || DEFAULT_PAYMENT_METHOD,
+    },
+  });
 
-  //       if (!res.success) {
-  //         toast({
-  //           variant: 'destructive',
-  //           description: res.message,
-  //         });
+  const [isPending, startTransition] = useTransition();
 
-  //         return;
-  //       }
+  async function onSubmit(values: z.infer<typeof paymentMethodSchema>) {
+    startTransition(async () => {
+      const res = await updateUserPaymentMethod(values);
 
-  //       router.push('/place-order');
-  //     });
-  //   }
+      if (!res.success) {
+        toast(res.message);
+
+        return;
+      }
+      router.push('/place-order');
+    });
+  }
 
   return (
     <>
-      {/* <div className="max-w-md mx-auto">
+      <div className="max-w-md mx-auto">
         <Form {...form}>
           <form
             method="post"
@@ -60,8 +75,8 @@ const PaymentMethodForm = () => {
                       <RadioGroup
                         onValueChange={field.onChange}
                         className="flex flex-col space-y-2"
-                      > */}
-      {/* {PAYMENT_METHODS.map((paymentMethod) => (
+                      >
+                        {PAYMENT_METHODS.map((paymentMethod) => (
                           <FormItem
                             key={paymentMethod}
                             className="flex items-center space-x-3 space-y-0"
@@ -76,8 +91,8 @@ const PaymentMethodForm = () => {
                               {paymentMethod}
                             </FormLabel>
                           </FormItem>
-                        ))} */}
-      {/* </RadioGroup>
+                        ))}
+                      </RadioGroup>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -96,7 +111,7 @@ const PaymentMethodForm = () => {
             </div>
           </form>
         </Form>
-      </div> */}
+      </div>
     </>
   );
 };
