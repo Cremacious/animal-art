@@ -368,15 +368,15 @@ export async function deleteOrder(id: string) {
   }
 }
 
-// export async function updateOrderToPaidCOD(orderId: string) {
-//   try {
-//     await updateOrderToPaid({ orderId });
-//     revalidatePath(`/order/${orderId}`);
-//     return { success: true, message: 'Order has been paid' };
-//   } catch (error) {
-//     return { success: false, message: formatError(error) };
-//   }
-// }
+export async function updateOrderToPaidCOD(orderId: string) {
+  try {
+    await updateOrderToPaid({ orderId });
+    revalidatePath(`/order/${orderId}`);
+    return { success: true, message: 'Order has been paid' };
+  } catch (error) {
+    return { success: false, message: formatError(error) };
+  }
+}
 
 export async function deliverOrder(orderId: string) {
   try {

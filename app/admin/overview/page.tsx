@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/table';
 import { formatCurrency, formatDateTime, formatNumber } from '@/lib/utils';
 
+import Charts from './charts';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { auth } from '@/auth';
@@ -85,7 +86,13 @@ const AdminOverviewPage = async () => {
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
-          <CardContent className="pl-2">{/* CHART */}</CardContent>
+          <CardContent className="pl-2">
+            <Charts
+              data={{
+                salesData: summary.salesData,
+              }}
+            />
+          </CardContent>
         </Card>
         <Card className="col-span-3">
           <CardHeader>
