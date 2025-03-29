@@ -21,9 +21,9 @@ export const metadata: Metadata = {
   title: 'Admin Dashboard',
 };
 
-//  Format Numbers
+// Remove the export keyword from the function
 const NUMBER_FORMATTER = new Intl.NumberFormat('en-US');
-export function formatLocalNumber(number: number) {
+function formatLocalNumber(number: number) {
   return NUMBER_FORMATTER.format(number);
 }
 
