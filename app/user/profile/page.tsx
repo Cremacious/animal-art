@@ -1,25 +1,26 @@
-import { Input } from '@/components/ui/input';
+import { Metadata } from 'next';
 import ProfileForm from './profile-form';
+import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
-const ProfilePage = async () => {
-  const session = await auth();
-
-  return (
-    <>
-      <div className="flex justify-center mx-auto">
-        <div className="grid grid-cols-2 bg-white">
-          <div className="border-amber-900 bg-green-200 md:w-1/2 m-4">
-            <h2>Profile</h2>
-            <ProfileForm />
-          </div>
-          <div className="border-amber-900 bg-blue-200 md:w-1/2 m-4">
-            <h2>Profile</h2>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+export const metadata: Metadata = {
+  title: 'Customer Profile',
 };
 
-export default ProfilePage;
+const session = await auth();
+if (!session) {
+  redirect('/login');
+}
+
+export default async function ProfilePage() {
+  return (
+    <SessionProvider session={session}>
+      <div className="max-w-md  mx-auto space-y-4">
+        <h2 className="h2-bold">Profile</h2>
+        Test User: {session?.user?.name}
+        <ProfileForm />
+      </div>
+    </SessionProvider>
+  );
+}
