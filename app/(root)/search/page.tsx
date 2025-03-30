@@ -55,100 +55,79 @@ const SearchPage = async (props: {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Sidebar */}
-      <nav className="bg-white hidden md:block shadow-md border-r h-screen flex-shrink-0 min-w-[250px] py-6 px-4 overflow-auto">
+      <nav className="bg-white hidden md:block shadow-md border-r h-screen flex-shrink-0 min-w-[64] py-6 px-4 overflow-auto">
         <ul>
           <li>
             <a
               href="javascript:void(0)"
-              className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
             >
               Dashboard
             </a>
           </li>
         </ul>
         <div className="mt-4">
-          <h6 className="text-blue-600 text-sm font-semibold px-4">
-            Information
+          <h6 className="text-blue-600 text-xs font-semibold px-4">
+            Animal Type
           </h6>
           <ul className="mt-2 space-y-1">
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+            <li className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all">
+              <Link
+                className="text-slate-700"
+                href={getFilteredUrl({ a: 'all' })}
               >
-                Audience
-              </a>
+                Any
+              </Link>
             </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+            {types.map((x) => (
+              <li
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+                key={x.animalType}
               >
-                Posts
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Schedules
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Promote
-              </a>
-            </li>
+                <Link
+                  href={getFilteredUrl({ a: x.animalType })}
+                  className={`block text-slate-700 ${
+                    animalType === x.animalType ? 'font-bold' : ''
+                  }`}
+                >
+                  {x.animalType}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="mt-4">
-          <h6 className="text-blue-600 text-sm font-semibold px-4">Income</h6>
+          <h6 className="text-blue-600 text-xs font-semibold px-4">Sizes</h6>
+          <ul className="mt-2 space-y-1">
+            <li className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all">
+              <Link
+                className="text-slate-700 underline"
+                href={getFilteredUrl({ s: 'all' })}
+              >
+                Any
+              </Link>
+            </li>
+            {sizes.map((x) => (
+              <li className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all" key={x.size}>
+                <Link
+                  href={getFilteredUrl({ s: x.size })}
+                  className={`block text-slate-700 ${
+                    size === x.size ? 'font-bold' : ''
+                  }`}
+                >
+                  {x.size}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        {/* <div className="mt-4">
+          <h6 className="text-blue-600 text-xs font-semibold px-4">Actions</h6>
           <ul className="mt-2 space-y-1">
             <li>
               <a
                 href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Earnings and taxes
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Refunds
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Declines
-              </a>
-            </li>
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
-              >
-                Payouts Details
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="mt-4">
-          <h6 className="text-blue-600 text-sm font-semibold px-4">Actions</h6>
-          <ul className="mt-2 space-y-1">
-            <li>
-              <a
-                href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
               >
                 Profile
               </a>
@@ -156,20 +135,20 @@ const SearchPage = async (props: {
             <li>
               <a
                 href="javascript:void(0)"
-                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
               >
                 Logout
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </nav>
 
       {/* Mobile Sidebar */}
       <div className="md:hidden absolute top-0 left-0 w-full bg-white shadow-md z-10">
         <div className="grid grid-cols-3 gap-4 p-4">
           <div>
-            <h6 className="text-teal-800 text-center text-md font-semibold mb-2">
+            <h6 className="text-teal-800 text-center text-sm font-semibold mb-2">
               Animal Type
             </h6>
             <ul className="space-y-1 text-center">
@@ -197,7 +176,7 @@ const SearchPage = async (props: {
           </div>
 
           <div>
-            <h6 className="text-blue-600 text-md text-center font-semibold mb-2">
+            <h6 className="text-blue-600 text-sm text-center font-semibold mb-2">
               Size
             </h6>
             <ul className="space-y-1">
