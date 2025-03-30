@@ -53,12 +53,121 @@ const SearchPage = async (props: {
   const prices = await getAllPrices();
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex min-h-screen flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="bg-white md:rounded-r-2xl mb-4 shadow-md border-r py-6 px-4 overflow-auto w-full md:w-64">
-        {/* Mobile Sidebar */}
-        <div className="md:hidden grid grid-cols-3 gap-4">
-          {/* Animal Type */}
+      <nav className="bg-white hidden md:block shadow-md border-r h-screen flex-shrink-0 min-w-[250px] py-6 px-4 overflow-auto">
+        <ul>
+          <li>
+            <a
+              href="javascript:void(0)"
+              className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+            >
+              Dashboard
+            </a>
+          </li>
+        </ul>
+        <div className="mt-4">
+          <h6 className="text-blue-600 text-sm font-semibold px-4">
+            Information
+          </h6>
+          <ul className="mt-2 space-y-1">
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Audience
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Posts
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Schedules
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Promote
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="mt-4">
+          <h6 className="text-blue-600 text-sm font-semibold px-4">Income</h6>
+          <ul className="mt-2 space-y-1">
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Earnings and taxes
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Refunds
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Declines
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Payouts Details
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="mt-4">
+          <h6 className="text-blue-600 text-sm font-semibold px-4">Actions</h6>
+          <ul className="mt-2 space-y-1">
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Profile
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                className="text-slate-700 font-medium text-[15px] block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Mobile Sidebar */}
+      <div className="md:hidden absolute top-0 left-0 w-full bg-white shadow-md z-10">
+        <div className="grid grid-cols-3 gap-4 p-4">
           <div>
             <h6 className="text-teal-800 text-center text-md font-semibold mb-2">
               Animal Type
@@ -87,7 +196,6 @@ const SearchPage = async (props: {
             </ul>
           </div>
 
-          {/* Size */}
           <div>
             <h6 className="text-blue-600 text-md text-center font-semibold mb-2">
               Size
@@ -115,123 +223,24 @@ const SearchPage = async (props: {
               ))}
             </ul>
           </div>
-
-          {/* Prices */}
-          <div>
-            <h6 className="text-blue-600 text-md text-center font-semibold mb-2">
-              Prices
-            </h6>
-            <ul className="space-y-1">
-              {/* {prices.map((x) => (
-                <li key={x.price}>
-                  <Link
-                    href={getFilteredUrl({ p: x.price })}
-                    className={`block text-slate-700 ${
-                      price === x.price ? 'font-bold' : ''
-                    }`}
-                  >
-                    {x.price}
-                  </Link>
-                </li>
-              ))} */}
-            </ul>
-          </div>
-        </div>
-
-        {/* Desktop Sidebar */}
-        <div className="hidden md:block">
-          <ul>
-            <li className="text-center">
-              <Link href="/search">
-                <Button className="w-full">Clear Search</Button>
-              </Link>
-            </li>
-          </ul>
-          <div className="mt-4">
-            <h6 className="text-teal-800 text-md text-center font-semibold">
-              Animal Type
-            </h6>
-            <ul className="mt-2 space-y-1">
-              <li className="text-center">
-                <Link
-                  className="text-slate-700"
-                  href={getFilteredUrl({ a: 'all' })}
-                >
-                  Any
-                </Link>
-              </li>
-              {types.map((x) => (
-                <li className="text-center" key={x.animalType}>
-                  <Link
-                    href={getFilteredUrl({ a: x.animalType })}
-                    className={`block text-slate-700 ${
-                      animalType === x.animalType ? 'font-bold' : ''
-                    }`}
-                  >
-                    {x.animalType}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mt-4">
-            <h6 className="text-blue-600 text-md text-center font-semibold">
-              Size
-            </h6>
-            <ul className="mt-2 space-y-1">
-              <li className="text-center">
-                <Link
-                  className="text-slate-700 underline"
-                  href={getFilteredUrl({ s: 'all' })}
-                >
-                  Any
-                </Link>
-              </li>
-              {sizes.map((x) => (
-                <li className="text-center" key={x.size}>
-                  <Link
-                    href={getFilteredUrl({ s: x.size })}
-                    className={`block text-slate-700 ${
-                      size === x.size ? 'font-bold' : ''
-                    }`}
-                  >
-                    {x.size}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mt-4">
-            <h6 className="text-blue-600 text-md text-center font-semibold">
-              Prices
-            </h6>
-            <ul className="mt-2 space-y-1">
-              {/* {prices.map((x) => (
-                <li key={x.price}>
-                  <Link
-                    href={getFilteredUrl({ p: x.price })}
-                    className={`block text-slate-700 ${
-                      price === x.price ? 'font-bold' : ''
-                    }`}
-                  >
-                    {x.price}
-                  </Link>
-                </li>
-              ))} */}
-            </ul>
-          </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex justify-center items-start mx-4 pb-8">
-        <div className="p-8 border-teal-100 border-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 bg-white rounded-2xl shadow-lg w-full  content-start">
-          {products.data.map((product) => (
-            <GalleryCard
-              key={product.id}
-              product={{ ...product, price: product.price.toString() }}
-            />
-          ))}
+      <div className="flex-grow flex flex-col justify-start mx-4 pb-8 mt-54 md:mt-0 rounded-2xl p-8 bg-white">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
+          {products.data.length > 0 ? (
+            products.data.map((product) => (
+              <GalleryCard
+                key={product.id}
+                product={{ ...product, price: product.price.toString() }}
+              />
+            ))
+          ) : (
+            <div className="col-span-full text-center text-gray-500">
+              No products available.
+            </div>
+          )}
         </div>
       </div>
     </div>

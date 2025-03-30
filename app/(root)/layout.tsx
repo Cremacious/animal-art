@@ -1,7 +1,5 @@
 // import Footer from '@/components/footer';
 import HomeNavbar from '@/components/shared/header/home-navbar';
-import MainNavbar from '@/components/shared/header/MainNavbar';
-import { Home } from 'lucide-react';
 
 export default function RootLayout({
   children,
