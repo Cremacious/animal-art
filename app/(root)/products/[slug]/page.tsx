@@ -32,20 +32,20 @@ const ProductPage = async ({
   // <ProductImages images={product.images} />
 
   return (
-    <section className="text-gray-600 container flex mx-auto  bg-white rounded-2xl">
+    <section className="text-gray-600 container flex mx-auto border-teal-300 border-8 bg-white rounded-2xl">
       <div className="container px-5 py-24 mx-auto">
-        <div className="lg:w-4/5 mx-auto flex flex-wrap">
-          <div className="w-full lg:w-1/2 flex flex-col justify-center items-center">
+        <div className="mx-auto flex flex-col md:flex-row gap-2">
+          <div className="w-full lg:w-1/2 flex flex-col">
             <Image
-              className="object-contain bg-white rounded-2xl p-4"
+              className="object-contain bg-white rounded-2xl p-4 border-teal-300 border-8"
               alt={product.name}
               src={product.images[0]}
               width={300}
               height={300}
-              style={{ maxHeight: '50vh', width: 'auto', height: 'auto' }}
+              style={{ maxHeight: '60vh', width: 'auto', height: 'auto' }}
             />
           </div>
-          <div className="bg-white rounded-2xl rounded-br-2xl lg:w-1/2 w-full lg:pl-10 lg:p-6 mt-6 lg:mt-0">
+          <div className="bg-white mt-2 p-4 rounded-2xl rounded-br-2xl lg:w-1/2 w-full">
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {product.name}
             </h1>
