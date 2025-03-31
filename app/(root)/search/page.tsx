@@ -55,7 +55,7 @@ const SearchPage = async (props: {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Sidebar */}
-      <nav className="bg-white hidden md:block shadow-md border-r h-screen flex-shrink-0 min-w-[64] py-6 px-4 overflow-auto">
+      <nav className="bg-white hidden rounded-tr-2xl md:block shadow-md border-r h-screen flex-shrink-0 min-w-[64] py-6 px-4 overflow-auto">
         <ul>
           <li>
             <a
@@ -108,7 +108,10 @@ const SearchPage = async (props: {
               </Link>
             </li>
             {sizes.map((x) => (
-              <li className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all" key={x.size}>
+              <li
+                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+                key={x.size}
+              >
                 <Link
                   href={getFilteredUrl({ s: x.size })}
                   className={`block text-slate-700 ${
