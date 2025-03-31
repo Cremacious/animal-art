@@ -1,4 +1,5 @@
 import AddToCart from '@/components/shared/product/add-to-cart';
+import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 import NotFoundPage from '@/app/not-found';
 import { getMyCart } from '@/lib/actions/cart.actions';
@@ -32,7 +33,7 @@ const ProductPage = async ({
   // <ProductImages images={product.images} />
 
   return (
-    <section className="text-gray-600 container flex mx-auto border-teal-300 border-8 bg-white rounded-2xl">
+    <section className="text-gray-700 container flex mx-auto border-teal-300 border-8 bg-white rounded-2xl">
       <div className="container px-5 py-24 mx-auto">
         <div className="mx-auto flex flex-col md:flex-row gap-2">
           <div className="w-full lg:w-1/2 flex flex-col">
@@ -59,26 +60,27 @@ const ProductPage = async ({
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
-            <div className="flex mt-6 items-center pb-5 border-t-2 pt-4 border-gray-200 mb-5">
-              <div className="flex">
-                <span className="mr-3">Animal:</span>
-                <div className="flex flex-row justify-evenly items-center">
-                  <span className="title-font bg-teal-100 rounded-xl font-medium text-2xl p-2 text-gray-900">
-                    ${Number(product.price)}
-                  </span>
-                  <AddToCart
-                    cart={cart}
-                    item={{
-                      productId: product.id,
-                      name: product.name,
-                      slug: product.slug,
-                      price: product.price.toString(),
-                      quantity: 1,
-                      image: product.images![0],
-                    }}
-                  />
-                </div>
-              </div>
+            <div className="flex flex-row gap-2 mt-2">
+              <span className="mr-3">Animal: {product.animalType}</span>
+              <span className="mr-3">Size: {product.size}</span>
+            </div>
+
+            <div className="flex mt-4 pt-4 border-t-2 flex-row justify-center gap-4 items-center">
+              <Badge className="text-xl bg-teal-700">
+                ${Number(product.price)}
+              </Badge>
+
+              <AddToCart
+                cart={cart}
+                item={{
+                  productId: product.id,
+                  name: product.name,
+                  slug: product.slug,
+                  price: product.price.toString(),
+                  quantity: 1,
+                  image: product.images![0],
+                }}
+              />
             </div>
           </div>
         </div>
