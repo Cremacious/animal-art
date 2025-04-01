@@ -37,9 +37,8 @@ const AdminOverviewPage = async () => {
   const summary = await getOrderSummary();
 
   return (
-    <div className="space-y-2">
-      <h1 className="h2-bold">Dashboard</h1>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className="space-y-2 bg-gray-200 rounded-2xl container mx-auto py-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 px-2">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
@@ -81,8 +80,8 @@ const AdminOverviewPage = async () => {
           </CardContent>
         </Card>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-        <Card className="col-span-4">
+      <div className="flex gap-2 flex-col md:flex-row justify-evenly mx-2">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
@@ -94,7 +93,7 @@ const AdminOverviewPage = async () => {
             />
           </CardContent>
         </Card>
-        <Card className="col-span-3">
+        <Card className="">
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>
           </CardHeader>
@@ -131,6 +130,7 @@ const AdminOverviewPage = async () => {
             </Table>
           </CardContent>
         </Card>
+        <div className="lg:col-span-1"></div>
       </div>
     </div>
   );

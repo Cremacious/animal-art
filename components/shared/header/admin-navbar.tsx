@@ -5,7 +5,7 @@ import { ShoppingCart } from 'lucide-react';
 import UserMenu from './user-menu';
 import logo from '@/public/images/newLogo.jpg';
 
-const HomeNavbar = () => {
+const AdminNavbar = () => {
   return (
     <>
       <header className="mb-4 border-b-4 border-teal-300 flex shadow-md py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
@@ -33,34 +33,34 @@ const HomeNavbar = () => {
               </li>
               <li>
                 <Link
-                  href="/search"
+                  href="/admin/overview"
                   className="hover:text-blue-700 text-slate-900 font-medium text-base"
                 >
-                  Gallery
+                  Overview
                 </Link>
               </li>
               <li>
                 <Link
-                  href="javascript:void(0)"
+                  href="/admin/orders"
                   className="hover:text-blue-700 text-slate-900 font-medium text-base"
                 >
-                  Blog
+                  Orders
                 </Link>
               </li>
               <li>
                 <Link
-                  href="javascript:void(0)"
+                  href="/admin/users"
                   className="hover:text-blue-700 text-slate-900 font-medium text-base"
                 >
-                  About
+                  Users
                 </Link>
               </li>
               <li>
                 <a
-                  href="javascript:void(0)"
+                  href="/admin/products"
                   className="hover:text-blue-700 text-slate-900 font-medium text-base"
                 >
-                  Contact
+                  Products
                 </a>
               </li>
             </ul>
@@ -135,4 +135,4 @@ const HomeNavbar = () => {
   );
 };
 
-export default HomeNavbar;
+export default AdminNavbar;
