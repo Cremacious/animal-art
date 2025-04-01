@@ -9,9 +9,7 @@ import { getUserRole, signOutUser } from '@/lib/actions/user.actions';
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { UserIcon } from 'lucide-react';
 import { auth } from '@/auth';
-import { redirect } from 'next/navigation';
 
 const UserMenu = async () => {
   const session = await auth();
