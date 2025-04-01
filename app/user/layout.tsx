@@ -1,17 +1,26 @@
+import '@/assets/styles/globals.css';
 
+import type { Metadata } from 'next';
+import { Toaster } from '@/components/ui/sonner';
+import UserNavbar from './user-navbar';
 
-export default function RootLayout({
+export const metadata: Metadata = {
+  title: 'User Dashboard',
+  description: 'User-specific pages',
+};
+
+export default function UserLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col">
-
-      <div className="flex flex-1 overflow-hidden">
-        <main className="flex-1 wrapper relative z-10">{children}</main>
-      </div>
-
-    </div>
+    <html lang="en">
+      <body className="antialiased">
+        <UserNavbar />
+        {children}
+        <Toaster richColors />
+      </body>
+    </html>
   );
 }

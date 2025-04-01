@@ -27,7 +27,6 @@ const OrdersPage = async (props: {
   });
   const { totalPages } = orders;
 
-  // Handle Page Change
   const onClick = (btnType: string) => {
     const pageValue = btnType === 'next' ? Number(page) + 1 : Number(page) - 1;
     console.log(pageValue);

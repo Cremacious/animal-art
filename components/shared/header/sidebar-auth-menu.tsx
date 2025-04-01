@@ -36,7 +36,7 @@ const SidebarAuthMenu = async () => {
         <ul>
           <li className="max-lg:border-b max-lg:py-3 px-3">
             <Link
-              href="/"
+              href="/user/profile"
               className="hover:text-blue-700 text-blue-700 font-medium block text-base"
             >
               Profile
@@ -44,7 +44,7 @@ const SidebarAuthMenu = async () => {
           </li>
           <li className="max-lg:border-b max-lg:py-3 px-3">
             <Link
-              href="/"
+              href="/user/orders"
               className="hover:text-blue-700 text-blue-700 font-medium block text-base"
             >
               Orders

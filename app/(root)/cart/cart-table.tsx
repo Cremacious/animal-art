@@ -1,15 +1,6 @@
 'use client';
 
-import { ArrowRight, Loader, Minus, Plus } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table';
+import { Loader, Minus, Plus } from 'lucide-react';
 import {
   addItemToCart,
   removeItemFromCart,
@@ -18,11 +9,9 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Cart } from '@/types';
-import CheckoutSteps from '@/components/shared/checkout-steps';
 import Image from 'next/image';
 import Link from 'next/link';
 import PaymentTotalCard from '@/components/shared/payment-total-card';
-import { formatCurrency } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
@@ -33,7 +22,6 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
 
   return (
     <>
-      {/* <CheckoutSteps current={0} /> */}
       {!cart || cart.items.length === 0 ? (
         <div className="h-screen flex justify-center items-center">
           <div className="text-center">
