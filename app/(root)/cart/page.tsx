@@ -9,8 +9,8 @@ const CartPage = async () => {
   const cart = await getMyCart();
 
   return (
-    <div className="p-4">
-      <div className="container mx-auto p-4 bg-white rounded-2xl">
+    <div className="p-2">
+      <div className="container mx-auto p-2 bg-white rounded-2xl">
         <CartTable cart={cart} />
       </div>
     </div>

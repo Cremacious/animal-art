@@ -39,7 +39,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
           <div className="text-center">
             Cart is empty.{' '}
             <Link href="/search" className="text-blue-500">
-              Go shopping
+              Go shopping.
             </Link>
           </div>
         </div>
