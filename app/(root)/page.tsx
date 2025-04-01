@@ -4,11 +4,11 @@ import HomepageHero from '@/components/homepage-hero';
 
 const Homepage = () => {
   return (
-    <>
+    <div className="p-4">
       <div className="bg-white rounded-2xl container mx-auto">
         <HomepageHero />
       </div>
-    </>
+    </div>
   );
 };
 

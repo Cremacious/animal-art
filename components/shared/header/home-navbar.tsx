@@ -27,10 +27,7 @@ const HomeNavbar = () => {
             <Image src={logo} alt="logo" className="w-10 rounded-full" />
             <div>Animal Art</div>
           </Link>
-          <Link
-            href="/"
-            className="hidden max-sm:block"
-          >
+          <Link href="/" className="hidden max-sm:block">
             <div className="flex items-center space-x-2">
               <Image src={logo} alt="logo" className="w-10 rounded-full" />
               <div>Animal Art</div>
@@ -104,13 +101,10 @@ const HomeNavbar = () => {
                 <SheetContent className="overflow-y-auto">
                   <SheetHeader>
                     <SheetTitle>
-                      {/* <Image
-                        src={myLogo}
-                        alt="Logo"
-                        className="ml-1 cursor-pointer rounded-full"
-                        height={60}
-                      /> */}
-                      Animal Art
+                    <div className="flex items-center space-x-2">
+              <Image src={logo} alt="logo" className="w-10 rounded-full" />
+              <div>Animal Art</div>
+            </div>
                     </SheetTitle>
                   </SheetHeader>
                   <div className="flex flex-col gap-6 p-4 text-center">
