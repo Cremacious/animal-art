@@ -6,32 +6,35 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 
-import { Accordion } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Menu } from 'lucide-react';
 import { ShoppingCart } from 'lucide-react';
 import SidebarAuthMenu from './auth-menu';
 import UserMenu from './user-menu';
+import logo from '@/public/images/newLogo.jpg';
 
 const HomeNavbar = () => {
   return (
     <>
       <header className=" mb-4 border-b-4 border-teal-300 flex shadow-[0px_0px_16px_rgba(17,_17,_26,_0.1)] py-4 px-4 sm:px-6 bg-white min-h-[70px] tracking-wide relative z-50">
         <div className="flex flex-wrap items-center justify-between gap-4 w-full max-w-screen-xl mx-auto">
-          <a href="javascript:void(0)" className="max-sm:hidden">
-            {/* <img
-              src="https://readymadeui.com/readymadeui.svg"
-              alt="logo"
-              className="w-36"
-            /> */}
-          </a>
-          <Link href="/" className="hidden max-sm:block">
-            {/* <img
-              src="https://readymadeui.com/readymadeui-short.svg"
-              alt="logo"
-              className="w-9"
-            /> */}
+          <Link
+            href="javascript:void(0)"
+            className="max-sm:hidden flex items-center space-x-2"
+          >
+            <Image src={logo} alt="logo" className="w-10 rounded-full" />
+            <div>Animal Art</div>
+          </Link>
+          <Link
+            href="/"
+            className="hidden max-sm:block"
+          >
+            <div className="flex items-center space-x-2">
+              <Image src={logo} alt="logo" className="w-10 rounded-full" />
+              <div>Animal Art</div>
+            </div>
           </Link>
           <div
             id="collapseMenu"
