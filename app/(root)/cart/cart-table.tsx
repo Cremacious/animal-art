@@ -44,14 +44,14 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
           </div>
         </div>
       ) : (
-        <div className="max-w-5xl max-md:max-w-xl mx-auto p-4 bg-teal-100 rounded-2xl">
+        <div className="max-w-5xl max-md:max-w-xl mx-auto p-2 bg-teal-100 rounded-2xl">
           <div className="grid md:grid-cols-3 gap-10 mt-8">
             <div className="md:col-span-2 space-y-4">
               {/* Product cards */}
               {cart.items.map((item, key) => (
                 <div
                   key={key}
-                  className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-[0_2px_12px_-3px_rgba(61,63,68,0.3)]"
+                  className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-lg"
                 >
                   <div className="flex gap-4">
                     <div className="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
