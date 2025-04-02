@@ -56,4 +56,4 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
 
 export default OrderDetailsPage;
 
-// const user = session?.user?.id ? await getUserRole(session.user.id) : null;
+

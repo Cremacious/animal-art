@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: 'Admin Dashboard',
 };
 
-// Remove the export keyword from the function
+
 const NUMBER_FORMATTER = new Intl.NumberFormat('en-US');
 function formatLocalNumber(number: number) {
   return NUMBER_FORMATTER.format(number);

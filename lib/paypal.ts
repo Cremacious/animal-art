@@ -43,7 +43,7 @@ export const paypal = {
   },
 };
 
-// Generate paypal access token
+
 async function generateAccessToken() {
   const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_APP_SECRET}`).toString(
     'base64'

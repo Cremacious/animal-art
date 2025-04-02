@@ -36,17 +36,7 @@ const HomepageHero = () => {
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <div className="relative flex -space-x-6">
-            {/* {testimonial.avatars.map((avatar, index) => (
-                  <Avatar
-                    key={index}
-                    className={`relative z-${
-                      index + 1
-                    }0 flex h-12 w-12 flex-shrink-0 rounded-full border-2 border-white object-cover`}
-                  >
-                    <AvatarImage src={avatar.image} alt="" />
-                    <AvatarFallback>{avatar.fallback}</AvatarFallback>
-                  </Avatar>
-                ))} */}
+
           </div>
           <div>
             <p className="mb-1 text-center text-sm text-gray-500 italic">

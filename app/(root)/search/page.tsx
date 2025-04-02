@@ -67,13 +67,13 @@ const SearchPage = async (props: {
           </li>
         </ul>
         <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">
+          <h6 className="text-blue-600 text-xs font-semibold px-4 text-center">
             Animal Type
           </h6>
-          <ul className="mt-2 space-y-1">
-            <li className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all">
+          <ul className="mt-2 space-y-1 ">
+            <li className="text-slate-700 text-center font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all">
               <Link
-                className="text-slate-700"
+                className="text-slate-700 "
                 href={getFilteredUrl({ a: 'all' })}
               >
                 Any
@@ -81,12 +81,12 @@ const SearchPage = async (props: {
             </li>
             {types.map((x) => (
               <li
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+                className="text-slate-700 text-center font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
                 key={x.animalType}
               >
                 <Link
                   href={getFilteredUrl({ a: x.animalType })}
-                  className={`block text-slate-700 ${
+                  className={`block text-slate-700 text-center ${
                     animalType === x.animalType ? 'font-bold' : ''
                   }`}
                 >
@@ -97,11 +97,13 @@ const SearchPage = async (props: {
           </ul>
         </div>
         <div className="mt-4">
-          <h6 className="text-blue-600 text-xs font-semibold px-4">Sizes</h6>
+          <h6 className="text-blue-600 text-xs font-semibold px-4 text-center">
+            Sizes
+          </h6>
           <ul className="mt-2 space-y-1">
-            <li className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all">
+            <li className="text-slate-700 text-center font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all">
               <Link
-                className="text-slate-700 underline"
+                className="text-slate-700 text-center"
                 href={getFilteredUrl({ s: 'all' })}
               >
                 Any
@@ -109,7 +111,7 @@ const SearchPage = async (props: {
             </li>
             {sizes.map((x) => (
               <li
-                className="text-slate-700 font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
+                className="text-slate-700 text-center font-medium text-sm block hover:text-slate-900 hover:bg-gray-100 rounded px-4 py-2 transition-all"
                 key={x.size}
               >
                 <Link
@@ -136,7 +138,7 @@ const SearchPage = async (props: {
             <ul className="space-y-1 text-center">
               <li>
                 <Link
-                  className="text-slate-700 underline"
+                  className="text-slate-700 text-center"
                   href={getFilteredUrl({ a: 'all' })}
                 >
                   Any
@@ -164,7 +166,7 @@ const SearchPage = async (props: {
             <ul className="space-y-1">
               <li className="text-center">
                 <Link
-                  className="text-slate-700 underline"
+                  className="text-slate-700 text-center"
                   href={getFilteredUrl({ s: 'all' })}
                 >
                   Any size

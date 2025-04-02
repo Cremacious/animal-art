@@ -27,17 +27,6 @@ const sampleData = {
       price: 59.99,
       isFeatured: false,
     },
-    // {
-    //   name: 'bird ',
-    //   slug: 'bird-1',
-    //   animalType: 'bird',
-    //   images: ['/images/art/flamingo'],
-    //   size: '8x11',
-    //   description: 'Put description here',
-    //   stock: 5,
-    //   price: 99.99,
-    //   isFeatured: false,
-    // },
     {
       name: 'dog 2',
       slug: 'dog-2',

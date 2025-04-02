@@ -53,7 +53,7 @@ const OrderDetailsTable = ({
     deliveredAt,
   } = order;
 
-  // Checks the loading status of the PayPal script
+ 
   function PrintLoadingState() {
     const [{ isPending, isRejected }] = usePayPalScriptReducer();
     let status = '';
@@ -65,20 +65,19 @@ const OrderDetailsTable = ({
     return status;
   }
 
-  // Creates a PayPal order
+
   const handleCreatePayPalOrder = async () => {
     const res = await createPayPalOrder(order.id);
     if (!res.success) return toast.error(res.message);
     return res.data;
   };
 
-  // Approves a PayPal order
+
   const handleApprovePayPalOrder = async (data: { orderID: string }) => {
     const res = await approvePayPalOrder(order.id, data);
     toast(res.message);
   };
 
-  // Button To mark the order as paid
   const MarkAsPaidButton = () => {
     const [isPending, startTransition] = useTransition();
     return (
@@ -97,7 +96,6 @@ const OrderDetailsTable = ({
     );
   };
 
-  // Button To mark the order as delivered
   const MarkAsDeliveredButton = () => {
     const [isPending, startTransition] = useTransition();
     return (

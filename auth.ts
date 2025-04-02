@@ -6,7 +6,7 @@ import { compareSync } from 'bcrypt-ts-edge';
 import { cookies } from 'next/headers';
 import { prisma } from '@/db/prisma';
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 export const config = {
   pages: {
@@ -27,7 +27,6 @@ export const config = {
       async authorize(credentials) {
         if (credentials == null) return null;
 
-        // Find user in database
         const user = await prisma.user.findFirst({
           where: {
             email: credentials.email as string,
@@ -68,11 +67,9 @@ export const config = {
       if (user) {
         token.id = user.id;
         token.role = user.role;
-        // If user has no name then use the email
         if (user.name === 'NO_NAME') {
           token.name = user.email!.split('@')[0];
 
-          // Update database to reflect the token name
           await prisma.user.update({
             where: { id: user.id },
             data: { name: token.name },

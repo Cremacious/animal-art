@@ -145,7 +145,7 @@ export async function getUserAddress(userId: string) {
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: {
-      address: true, // Assuming the address is stored in the `address` field
+      address: true, 
     },
   });
 
@@ -156,7 +156,7 @@ export async function getUserAddress(userId: string) {
   return user.address;
 }
 
-// Update User Profile
+
 export async function updateProfile(user: { name: string; email: string }) {
   try {
     const session = await auth();

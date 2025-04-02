@@ -29,7 +29,6 @@ const ProfileForm = () => {
     },
   });
 
-  // Submit form to update profile
   async function onSubmit(values: z.infer<typeof updateProfileSchema>) {
     const res = await updateProfile(values);
 

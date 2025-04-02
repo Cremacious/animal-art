@@ -2,7 +2,7 @@ import { PAYMENT_METHODS } from './constants';
 import { formatNumberWithDecimal } from '@/lib/utils';
 import { z } from 'zod';
 
-// Make sure price is formatted with two decimal places
+
 const currency = z
   .string()
   .refine(
@@ -79,7 +79,7 @@ export const shippingAddressSchema = z.object({
   lng: z.number().optional(),
 });
 
-// Insert Order Schema
+
 export const insertOrderSchema = z.object({
   userId: z.string().min(1, 'User is required'),
   itemsPrice: currency,
