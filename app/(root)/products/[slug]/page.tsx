@@ -18,28 +18,14 @@ const ProductPage = async ({
     return <NotFoundPage />;
   }
 
-  //   <AddToCart
-  //   cart={cart}
-  //   item={{
-  //     productId: product.id,
-  //     name: product.name,
-  //     slug: product.slug,
-  //     price: product.price.toString(),
-  //     quantity: 1,
-  //     image: product.images![0],
-  //   }}
-  // />
-
-  // <ProductImages images={product.images} />
-
   return (
     <div className="p-4">
-      <section className="text-gray-700 container flex mx-auto border-teal-300 border-8 bg-white rounded-2xl">
+      <section className="text-gray-700 container shadow-xl flex mx-auto border-white border-8 bg-teal-100 rounded-2xl">
         <div className="container px-5 py-8 mx-auto">
           <div className="mx-auto flex flex-col md:flex-row gap-2">
             <div className="w-full lg:w-1/2 flex flex-col">
               <Image
-                className="object-contain bg-white rounded-2xl p-4 border-teal-300 border-8"
+                className="object-contain bg-teal-100 rounded-2xl p-4"
                 alt={product.name}
                 src={product.images[0]}
                 width={300}
@@ -47,7 +33,7 @@ const ProductPage = async ({
                 style={{ maxHeight: '60vh', width: 'auto', height: 'auto' }}
               />
             </div>
-            <div className="bg-white mt-2 p-4 rounded-2xl rounded-br-2xl lg:w-1/2 w-full">
+            <div className="bg-white mt-2 p-6 rounded-2xl shadow-xl rounded-br-2xl lg:w-1/2 w-full">
               <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
                 {product.name}
               </h1>

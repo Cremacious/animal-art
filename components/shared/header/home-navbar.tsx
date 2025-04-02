@@ -39,7 +39,7 @@ const HomeNavbar = () => {
               <li className="max-lg:border-b max-lg:py-3 px-3">
                 <Link
                   href="/"
-                  className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+                  className="hover:text-blue-700 text-slate-900 font-medium block text-base"
                 >
                   Home
                 </Link>
@@ -115,7 +115,7 @@ const HomeNavbar = () => {
                       <li className="max-lg:border-b max-lg:py-3 px-3">
                         <Link
                           href="/"
-                          className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+                          className="hover:text-blue-700 text-slate-900 font-medium block text-base"
                         >
                           Home
                         </Link>

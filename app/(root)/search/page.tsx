@@ -55,7 +55,7 @@ const SearchPage = async (props: {
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
       {/* Sidebar */}
-      <nav className="bg-white hidden rounded-r-2xl md:block shadow-md border-r h-screen flex-shrink-0 min-w-[64] py-6 px-4 overflow-auto">
+      <nav className="bg-white border-teal-200 hidden rounded-r-2xl md:block shadow-md border-r-4 h-screen flex-shrink-0 min-w-[64] py-6 px-4 overflow-auto">
         <ul>
           <li>
             <Link
@@ -188,7 +188,7 @@ const SearchPage = async (props: {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex flex-col justify-start mx-4 pb-8 mt-54 md:mt-0 rounded-2xl p-8 bg-white border-6 border-teal-300 ">
+      <div className="flex-grow flex flex-col justify-start mx-4 pb-8 mt-54 md:mt-0 rounded-2xl p-8 bg-teal-100 border-6 border-white ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
           {products.data.length > 0 ? (
             products.data.map((product) => (

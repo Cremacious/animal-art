@@ -35,8 +35,6 @@ const OrdersPage = async (props: {
     query: 'all',
   });
 
-  console.log(orders);
-
   return (
     <div className="flex justify-center p-2">
       <div className="bg-white container min-h-screen rounded-2xl p-4">

@@ -134,12 +134,10 @@ export async function updateUserPaymentMethod(
 }
 
 export async function getUserRole(userId: string) {
-  console.log('Fetching role for user ID:', userId); // Debugging
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: { role: true },
   });
-  console.log('User role:', user); // Debugging
   return user;
 }
 

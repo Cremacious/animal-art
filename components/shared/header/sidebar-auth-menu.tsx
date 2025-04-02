@@ -37,7 +37,7 @@ const SidebarAuthMenu = async () => {
           <li className="max-lg:border-b max-lg:py-3 px-3">
             <Link
               href="/user/profile"
-              className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+              className="hover:text-blue-700 text-slate-900 font-medium block text-base"
             >
               Profile
             </Link>
@@ -45,7 +45,7 @@ const SidebarAuthMenu = async () => {
           <li className="max-lg:border-b max-lg:py-3 px-3">
             <Link
               href="/user/orders"
-              className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+              className="hover:text-blue-700 text-slate-900 font-medium block text-base"
             >
               Orders
             </Link>
@@ -53,7 +53,7 @@ const SidebarAuthMenu = async () => {
           <li className="max-lg:border-b max-lg:py-3 px-3">
             <Link
               href="/"
-              className="hover:text-blue-700 text-blue-700 font-medium block text-base"
+              className="hover:text-blue-700 text-slate-900 font-medium block text-base"
             >
               <Button variant="link" onClick={signOutUser}>
                 Sign Out
