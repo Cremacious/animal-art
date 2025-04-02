@@ -42,10 +42,10 @@ const PlaceOrderPage = async () => {
 
   return (
     <div className="p-2">
-      <div className="container p-2 md:p-10 mx-auto bg-teal-100 rounded-2xl shadow-2xl">
+      <div className="container p-2 md:p-10 mx-auto bg-teal-100 rounded-2xl shadow-2xl border-6 border-white">
         <div className="grid md:grid-cols-3 md:gap-5">
           <div className="md:col-span-2 overflow-x-auto space-y-4">
-            <Card>
+            <Card className="shadow-lg">
               <CardContent className="p-4 gap-4">
                 <h2 className="text-xl pb-4">Shipping Address</h2>
                 <p>{userAddress.fullName}</p>
@@ -60,7 +60,7 @@ const PlaceOrderPage = async () => {
                 </div>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="shadow-lg">
               <CardContent className="p-4 gap-4">
                 <h2 className="text-xl pb-4">Order Items</h2>
                 <Table>
@@ -102,7 +102,7 @@ const PlaceOrderPage = async () => {
             </Card>
           </div>
           <div>
-            <Card className=" md:mt-0 mt-4 ">
+            <Card className=" md:mt-0 mt-4 className='shadow-lg'">
               <CardContent className="p-4 gap-4 space-y-4">
                 <div className="flex justify-between">
                   <div>Items</div>

@@ -118,25 +118,12 @@ const OrderDetailsTable = ({
 
   return (
     <>
-      <h1 className="py-4 text-2xl text-center bg-white rounded-lg mb-4 shadow-lg">
+      <h1 className="py-4 text-2xl w-full md:w-1/4 text-center bg-white rounded-lg mb-4 shadow-lg">
         {' '}
         Order {formatId(order.id)}
       </h1>
       <div className="grid md:grid-cols-3 md:gap-5">
         <div className="overflow-x-auto md:col-span-2 space-y-4">
-          {/* <Card className="shadow-lg">
-            <CardContent className="p-4 gap-4">
-              <h2 className="text-xl pb-4">Payment Method</h2>
-              <p>{paymentMethod}</p>
-              {isPaid ? (
-                <Badge variant="secondary">
-                  Paid at {formatDateTime(paidAt!).dateTime}
-                </Badge>
-              ) : (
-                <Badge variant="destructive">Not paid</Badge>
-              )}
-            </CardContent>
-          </Card> */}
           <Card className="shadow-lg">
             <CardContent className="p-4 gap-4">
               <h2 className="text-xl pb-4">Shipping Address</h2>

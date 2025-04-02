@@ -32,7 +32,7 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
   const user = session?.user?.id ? await getUserRole(session.user.id) : null;
   return (
     <div className="p-2">
-      <div className="container p-2 md:p-10 mx-auto bg-teal-100 rounded-2xl shadow-2xl">
+      <div className="container p-2 md:p-10 mx-auto bg-teal-100 rounded-2xl shadow-2xl border-6 border-white">
         <OrderDetailsTable
           order={{
             ...order,
