@@ -49,7 +49,7 @@ const ShippingAddressForm = ({ address }: { address: ShippingAddress }) => {
   };
 
   return (
-    <div className="bg-white md:px-10 rounded-2xl shadow-2xl">
+    <div className="bg-white px-4 md:px-10 rounded-2xl shadow-2xl">
       <div className="max-w-md mx-auto space-y-4">
         <h1 className="h2-bold mt-4">Shipping Address</h1>
         <p className="text-sm text-muted-foreground">
