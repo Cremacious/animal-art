@@ -20,11 +20,11 @@ const UserMenu = async () => {
     return (
       <>
         <div className="flex gap-2">
-          <Button asChild variant="outline" size="sm">
-            <Link href="/sign-in">New sign in</Link>
+          <Button asChild variant="outline">
+            <Link href="/sign-in">Sign in</Link>
           </Button>
-          <Button asChild size="sm">
-            <Link href="/sign-up">new sign up</Link>
+          <Button asChild>
+            <Link href="/sign-up">Sign up</Link>
           </Button>
         </div>
       </>

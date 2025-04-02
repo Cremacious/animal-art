@@ -118,10 +118,13 @@ const OrderDetailsTable = ({
 
   return (
     <>
-      <h1 className="py-4 text-2xl"> Order {formatId(order.id)}</h1>
+      <h1 className="py-4 text-2xl text-center bg-white rounded-lg mb-4 shadow-lg">
+        {' '}
+        Order {formatId(order.id)}
+      </h1>
       <div className="grid md:grid-cols-3 md:gap-5">
         <div className="overflow-x-auto md:col-span-2 space-y-4">
-          <Card>
+          {/* <Card className="shadow-lg">
             <CardContent className="p-4 gap-4">
               <h2 className="text-xl pb-4">Payment Method</h2>
               <p>{paymentMethod}</p>
@@ -133,8 +136,8 @@ const OrderDetailsTable = ({
                 <Badge variant="destructive">Not paid</Badge>
               )}
             </CardContent>
-          </Card>
-          <Card>
+          </Card> */}
+          <Card className="shadow-lg">
             <CardContent className="p-4 gap-4">
               <h2 className="text-xl pb-4">Shipping Address</h2>
               <p>{shippingAddress.fullName}</p>
@@ -151,7 +154,7 @@ const OrderDetailsTable = ({
               )}
             </CardContent>
           </Card>
-          <Card>
+          <Card className="shadow-lg p-2">
             <CardContent className="p-4 gap-4">
               <h2 className="text-xl pb-4">Order Items</h2>
               <Table>
@@ -193,7 +196,7 @@ const OrderDetailsTable = ({
           </Card>
         </div>
         <div>
-          <Card>
+          <Card className="mt-4 md:mt-0 shadow-2xl">
             <CardContent className="p-4 space-y-4 gap-4">
               <h2 className="text-xl pb-4">Order Summary</h2>
               <div className="flex justify-between">

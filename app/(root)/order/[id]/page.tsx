@@ -31,38 +31,26 @@ const OrderDetailsPage = async (props: { params: Promise<{ id: string }> }) => {
 
   const user = session?.user?.id ? await getUserRole(session.user.id) : null;
   return (
-    <>
-      {/* <OrderDetailsTable
-        order={{
-          ...order,
-          shippingAddress: formattedAddress, // Use the transformed address
-          itemsPrice: order.itemsPrice.toString(),
-          shippingPrice: order.shippingPrice.toString(),
-          taxPrice: order.taxPrice.toString(),
-          totalPrice: order.totalPrice.toString(),
-          orderItems: order.orderItems.map((item) => ({
-            ...item,
-            price: item.price.toString(),
-          })),
-        }}
-      /> */}
-      <OrderDetailsTable
-        order={{
-          ...order,
-          shippingAddress: formattedAddress, // Use the transformed address
-          itemsPrice: order.itemsPrice.toString(),
-          shippingPrice: order.shippingPrice.toString(),
-          taxPrice: order.taxPrice.toString(),
-          totalPrice: order.totalPrice.toString(),
-          orderItems: order.orderItems.map((item) => ({
-            ...item,
-            price: item.price.toString(),
-          })),
-        }}
-        paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
-        isAdmin={user?.role === 'admin' || false}
-      />
-    </>
+    <div className="p-2">
+      <div className="container p-2 md:p-10 mx-auto bg-teal-100 rounded-2xl shadow-2xl">
+        <OrderDetailsTable
+          order={{
+            ...order,
+            shippingAddress: formattedAddress, 
+            itemsPrice: order.itemsPrice.toString(),
+            shippingPrice: order.shippingPrice.toString(),
+            taxPrice: order.taxPrice.toString(),
+            totalPrice: order.totalPrice.toString(),
+            orderItems: order.orderItems.map((item) => ({
+              ...item,
+              price: item.price.toString(),
+            })),
+          }}
+          paypalClientId={process.env.PAYPAL_CLIENT_ID || 'sb'}
+          isAdmin={user?.role === 'admin' || false}
+        />
+      </div>
+    </div>
   );
 };
 

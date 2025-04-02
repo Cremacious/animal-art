@@ -25,10 +25,11 @@ const ShippingAddressPage = async () => {
   const user = await getUserById(userId);
 
   return (
-    <>
-      <CheckoutSteps current={1} />
-      <ShippingAddressForm address={user.address as ShippingAddress} />
-    </>
+    <div className="p-4">
+      <div className=" bg-white border-6 border-teal-100 container mx-auto flex justify-center py-10 rounded-2xl shadow-2xl min-h-screen">
+        <ShippingAddressForm address={user.address as ShippingAddress} />
+      </div>
+    </div>
   );
 };
 
