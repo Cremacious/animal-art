@@ -32,24 +32,25 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
           </div>
         </div>
       ) : (
-        <div className="max-w-5xl max-md:max-w-xl mx-auto p-2 bg-teal-100 rounded-2xl">
-          <div className="grid md:grid-cols-3 gap-10 mt-8">
-            <div className="md:col-span-2 space-y-4">
+        <div className="max-w-5xl max-md:max-w-xl mx-auto p-2 rounded-2xl">
+          <div className="grid md:grid-cols-3 gap-10 mt-8 items-start">
+            <div className="md:col-span-2 space-y-4 justify-center mx-auto">
               {/* Product cards */}
               {cart.items.map((item, key) => (
                 <div
                   key={key}
-                  className="flex gap-4 bg-white px-4 py-6 rounded-md shadow-lg"
+                  className="flex gap-4 w-full bg-white px-4 py-6 rounded-md shadow-lg mx-auto"
                 >
                   <div className="flex gap-4">
-                    <div className="w-28 h-28 max-sm:w-24 max-sm:h-24 shrink-0">
+                    <div className="aspect-square relative w-24 h-24 flex-shrink-0">
                       <Image
                         src={item.image}
                         alt={item.name}
-                        width={50}
-                        height={50}
+                        fill
+                        className="object-cover rounded-md"
                       />
                     </div>
+
                     <div className="flex flex-col gap-4">
                       <div>
                         <h3 className="text-sm sm:text-base font-semibold text-slate-900">
@@ -103,7 +104,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                     </div>
                   </div>
                   <div className="ml-auto flex flex-col">
-                    <div className="flex items-start gap-4 justify-end">
+                    <div className="flex items-start gap-2 justify-end">
                       {/* Trashcan */}
                       <Button
                         disabled={isPending}
@@ -140,7 +141,7 @@ const CartTable = ({ cart }: { cart?: Cart }) => {
                         )}
                       </Button>
                     </div>
-                    <h3 className="text-sm sm:text-base font-semibold text-slate-900 mt-auto">
+                    <h3 className="text-sm sm:text-base font-semibold mb-1 text-slate-900 mt-auto">
                       ${item.price} x {item.quantity}
                     </h3>
                   </div>

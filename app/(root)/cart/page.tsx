@@ -10,7 +10,7 @@ const CartPage = async () => {
 
   return (
     <div className="p-2">
-      <div className="container mx-auto p-2 bg-white rounded-2xl">
+      <div className="container mx-auto p-2 border-6 border-white bg-teal-100 rounded-2xl h-screen mb-4">
         <CartTable cart={cart} />
       </div>
     </div>
